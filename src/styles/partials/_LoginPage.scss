@@ -1,0 +1,13 @@
+@use './variables' as v;
+
+.login-cont{
+    height: 100vh;
+    width: 100vw;
+    @include v.center;
+    .login-box{
+        @include v.center;
+        border: 1px solid red;
+        height: 40vmin;
+        width: 40vmin;
+    }
+}
