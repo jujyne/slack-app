@@ -2,14 +2,24 @@
 
 
 //colors
-$primaryColor:#e16ba4;
-$secondaryColor: #fab34e;
+$primaryColor:#ef4a75;
+$secondaryColor:  #FFCB37;
+$tertiaryColor: #FF5864;
 $offWhite: #E8E8E8;
 
 
-//font
+
+//font style
 $fontStyle: 'Poppins', sans-serif;
 
+//font size 
+$header: 2rem;
+
+
+//mixins
+@mixin gradient($direction) {
+  background: linear-gradient(to $direction, $primaryColor, $secondaryColor);
+}
 
 @mixin center {
     display: flex;
