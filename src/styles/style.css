@@ -98,7 +98,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 .login-cont .login-box button {
-  background: linear-gradient(to right, #e16ba4, #fab34e);
+  background: linear-gradient(to right, #E02E54, #FFCB37);
   color: white;
   border-radius: 1rem;
   padding: 0.5rem 4rem;
@@ -110,7 +110,7 @@ body {
   color: white;
 }
 .login-cont .login-box button:hover {
-  background: linear-gradient(to left, #e16ba4, #fab34e);
+  background: linear-gradient(to left, #E02E54, #FFCB37);
 }
 .login-cont .login-box p {
   font-size: 0.8rem;
@@ -131,7 +131,7 @@ body {
   align-items: flex-start;
 }
 .sign-up-cont nav {
-  background: linear-gradient(to right, #e16ba4, #fab34e);
+  background: linear-gradient(to right, #E02E54, #FFCB37);
   height: 10vh;
   width: 100vw;
   display: flex;
@@ -181,7 +181,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 .sign-up-cont main form button {
-  background: linear-gradient(to right, #e16ba4, #fab34e);
+  background: linear-gradient(to right, #E02E54, #FFCB37);
   color: white;
   border-radius: 1rem;
   padding: 0.5rem 4rem;
@@ -190,7 +190,7 @@ body {
   cursor: pointer;
 }
 .sign-up-cont main form button:hover {
-  background: linear-gradient(to left, #e16ba4, #fab34e);
+  background: linear-gradient(to left, #E02E54, #FFCB37);
 }
 
 .dashboard-cont {
@@ -213,7 +213,7 @@ body {
   flex-direction: column;
 }
 .dashboard-cont nav header {
-  background: linear-gradient(to right, #e16ba4, #fab34e);
+  background: linear-gradient(to right, #E02E54, #FFCB37);
   height: 10vh;
   display: flex;
 }
@@ -235,20 +235,24 @@ body {
 .dashboard-cont nav main ul {
   padding: 1rem;
 }
-.dashboard-cont nav main ul li {
-  padding: 1rem;
-}
 .dashboard-cont nav main ul li a {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 1rem;
   color: black;
   display: flex;
   align-items: center;
   flex-direction: row;
+  transition: padding-right 0.3s;
 }
 .dashboard-cont nav main ul li:hover a {
-  color: #fab34e;
+  padding-right: 2rem;
+  background-color: #E8E8E8;
 }
 .dashboard-cont nav main ul li:hover a .sidebar-icons {
-  color: #e16ba4;
+  color: #E02E54;
 }
 .dashboard-cont nav footer {
   height: 20vh;
@@ -257,24 +261,39 @@ body {
 }
 .dashboard-cont nav footer .sidebar-profile {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   max-width: -moz-fit-content;
   max-width: fit-content;
+  padding: 0.5rem;
+  transition: padding-right 0.3s;
+  border-radius: 1rem;
 }
 .dashboard-cont nav footer .sidebar-profile img {
   width: 3rem;
+  padding-right: 0.5rem;
+}
+.dashboard-cont nav footer .sidebar-profile:hover {
+  padding-right: 2rem;
+  background-color: #E8E8E8;
 }
 .dashboard-cont nav footer a {
+  padding: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 1rem;
+  color: black;
   display: flex;
   align-items: center;
-  padding: 1rem;
-  color: black;
+  flex-direction: row;
+  transition: padding-right 0.3s;
+  border-radius: 1rem;
 }
 .dashboard-cont nav footer a:hover {
-  color: #fab34e;
+  padding-right: 2rem;
+  background-color: #E8E8E8;
 }
 .dashboard-cont nav footer a:hover .sidebar-icons {
-  color: #e16ba4;
+  color: #E02E54;
 }
 .dashboard-cont main {
   height: 90vh;

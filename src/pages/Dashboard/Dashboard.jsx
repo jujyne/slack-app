@@ -1,6 +1,6 @@
 import { DoorOpen, Mail, Settings, Users2 } from "lucide-react";
 import logo from "../../assets/images/ChizMiz-nav.png";
-import pic from '../../assets/images/profile-pic.png';
+import pic from "../../assets/images/profile-pic.png";
 
 export function Dashboard() {
   return (
@@ -31,10 +31,10 @@ export function Dashboard() {
           </ul>
         </main>
         <footer>
-          <div className="sidebar-profile">
+          <a href="" className="sidebar-profile">
             <img src={pic} alt="" />
-            <a href="">Marites Chismosa</a>
-          </div>
+            <span>Marites Chismosa</span>
+          </a>
           <a href="/">
             <DoorOpen className="sidebar-icons" /> Logout
           </a>
