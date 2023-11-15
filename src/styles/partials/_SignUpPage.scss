@@ -1,10 +1,10 @@
 @use './variables' as v;
 
-.login-cont{
+.sign-up-cont{
     @include v.center;
     height: 100vh;
-    width: 100vw;
-    .login-box{
+    width:100vw;
+    form{
         @include v.center;
         @include v.shadow;
         background-color: white;
@@ -12,9 +12,6 @@
         padding: 1rem;
         padding-top:1rem;
         height: fit-content;
-        img{
-            width:40vmin;
-        }
         input{
             border-radius: 1rem;
             padding: 0.5rem 4rem;
@@ -22,7 +19,6 @@
             background-color:v.$offWhite;
             text-align: center;
             font-size: 1rem;
-            margin:1rem;
             font-family: v.$fontStyle;
         }
         button{
@@ -37,12 +33,6 @@
         button:hover {
             @include v.gradient(left);
         }
-        p{
-            font-size: 0.8rem;
-            a{
-                color:v.$tertiaryColor;
-                font-weight: bold;
-            }
-        }
     }
+
 }

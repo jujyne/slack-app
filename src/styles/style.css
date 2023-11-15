@@ -59,22 +59,23 @@ body {
 }
 
 .login-cont {
-  height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 }
 .login-cont .login-box {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 1rem;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.69);
   -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.69);
   -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.69);
+  background-color: white;
+  border-radius: 1rem;
   padding: 1rem;
   padding-top: 1rem;
   height: -moz-fit-content;
@@ -111,4 +112,49 @@ body {
 .login-cont .login-box p a {
   color: #FF5864;
   font-weight: bold;
+}
+
+.sign-up-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+.sign-up-cont form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.69);
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.69);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.69);
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  padding-top: 1rem;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.sign-up-cont form input {
+  border-radius: 1rem;
+  padding: 0.5rem 4rem;
+  border: none;
+  background-color: #E8E8E8;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+.sign-up-cont form button {
+  background: linear-gradient(to right, #ef4a75, #FFCB37);
+  color: white;
+  border-radius: 1rem;
+  padding: 0.5rem 4rem;
+  margin: 1rem;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.sign-up-cont form button:hover {
+  background: linear-gradient(to left, #ef4a75, #FFCB37);
 }/*# sourceMappingURL=style.css.map */
