@@ -6,8 +6,27 @@
     @include v.center;
     .login-box{
         @include v.center;
-        border: 1px solid red;
-        height: 40vmin;
-        width: 40vmin;
+        border-radius: 1rem;
+        @include v.shadow;
+        padding: 1rem;
+        input{
+            border-radius: 1rem;
+            padding: 0.5rem 4rem;
+            border:none;
+            background-color:v.$offWhite;
+            text-align: center;
+            font-size: 1rem;
+            margin:1rem;
+            font-family: v.$fontStyle;
+        }
+        button{
+            background-image: linear-gradient(to right, v.$primaryColor, v.$secondaryColor );
+            color: white;
+            border-radius: 1rem;
+            padding: 0.5rem 4rem;
+            margin:1rem;
+            font-family: v.$fontStyle;
+        }
+       
     }
 }
