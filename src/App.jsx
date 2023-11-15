@@ -6,8 +6,10 @@ export function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/login' element={<LoginPage/>}></Route>
-        <Route path='/sign-up' element={<SignUpPage/>}></Route>
+        <Route path="/">
+          <Route index element={<LoginPage />}></Route>
+          <Route path="sign-up" element={<SignUpPage />}></Route>
+        </Route>
       </Routes>
     </Router>
   );

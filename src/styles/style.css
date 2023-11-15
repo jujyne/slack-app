@@ -56,6 +56,9 @@ button {
 
 body {
   font-family: "Poppins", sans-serif;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
 }
 
 .login-cont {
@@ -121,8 +124,36 @@ body {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  display: flex;
+  align-items: flex-start;
 }
-.sign-up-cont form {
+.sign-up-cont nav {
+  background: linear-gradient(to right, #ef4a75, #FFCB37);
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+}
+.sign-up-cont nav a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-direction: row;
+}
+.sign-up-cont nav a img {
+  width: 5rem;
+  padding: 1rem;
+  padding-right: 0.5rem;
+}
+.sign-up-cont main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 90vh;
+  width: 100vw;
+}
+.sign-up-cont main form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,7 +168,7 @@ body {
   height: -moz-fit-content;
   height: fit-content;
 }
-.sign-up-cont form input {
+.sign-up-cont main form input {
   border-radius: 1rem;
   padding: 0.5rem 4rem;
   border: none;
@@ -146,7 +177,7 @@ body {
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
 }
-.sign-up-cont form button {
+.sign-up-cont main form button {
   background: linear-gradient(to right, #ef4a75, #FFCB37);
   color: white;
   border-radius: 1rem;
@@ -155,6 +186,6 @@ body {
   font-family: "Poppins", sans-serif;
   cursor: pointer;
 }
-.sign-up-cont form button:hover {
+.sign-up-cont main form button:hover {
   background: linear-gradient(to left, #ef4a75, #FFCB37);
 }/*# sourceMappingURL=style.css.map */

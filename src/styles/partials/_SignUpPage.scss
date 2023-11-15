@@ -2,37 +2,64 @@
 
 .sign-up-cont{
     @include v.center;
+    // border: 1px solid red;
     height: 100vh;
     width:100vw;
-    form{
-        @include v.center;
-        @include v.shadow;
-        background-color: white;
-        border-radius: 1rem;
-        padding: 1rem;
-        padding-top:1rem;
-        height: fit-content;
-        input{
-            border-radius: 1rem;
-            padding: 0.5rem 4rem;
-            border:none;
-            background-color:v.$offWhite;
-            text-align: center;
-            font-size: 1rem;
-            font-family: v.$fontStyle;
-        }
-        button{
-            @include v.gradient(right);
-            color: white;
-            border-radius: 1rem;
-            padding: 0.5rem 4rem;
-            margin:1rem;
-            font-family: v.$fontStyle;
-            cursor:pointer;
-        }
-        button:hover {
-            @include v.gradient(left);
-        }
+    display: flex;
+    align-items: flex-start;
+    nav{
+        @include v.gradient(right);
+        // border: 1px solid blue;
+        height: 10vh;
+        width: 100vw;
+        display:flex;
+       
+        a{
+            @include v.center;
+            flex-direction: row;
+            img{
+                width:5rem;
+                padding:1rem;
+                padding-right:0.5rem;
+            }
+        } 
     }
-
+    main{ 
+        @include v.center;
+        // border: 1px solid yellow;
+        height:90vh;
+        width: 100vw;
+        form{
+            @include v.center;
+            @include v.shadow;
+            background-color: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            padding-top:1rem;
+            height: fit-content;
+            input{
+                border-radius: 1rem;
+                padding: 0.5rem 4rem;
+                border:none;
+                background-color:v.$offWhite;
+                text-align: center;
+                font-size: 1rem;
+                font-family: v.$fontStyle;
+            }
+            button{
+                @include v.gradient(right);
+                color: white;
+                border-radius: 1rem;
+                padding: 0.5rem 4rem;
+                margin:1rem;
+                font-family: v.$fontStyle;
+                cursor:pointer;
+            }
+            button:hover {
+                @include v.gradient(left);
+            }
+        }
+    
+    }
+    
 }
