@@ -1,6 +1,25 @@
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+
+//colors
+$primaryColor:#e16ba4;
+$secondaryColor: #fab34e;
+$offWhite: #E8E8E8;
+
+
+//font
+$fontStyle: 'Poppins', sans-serif;
+
+
 @mixin center {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
+
+@mixin shadow{
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.69);
+-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.69);
+-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.69);
+}

@@ -1,3 +1,4 @@
+@import url("https://fonts.cdnfonts.com/css/poppins");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -47,6 +48,15 @@ table {
   border-spacing: 0;
 }
 
+button {
+  border: none;
+  font-style: inherit;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
 .login-cont {
   height: 100vh;
   width: 100vw;
@@ -60,7 +70,27 @@ table {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 1px solid red;
-  height: 40vmin;
-  width: 40vmin;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.69);
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.69);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.69);
+  padding: 1rem;
+}
+.login-cont .login-box input {
+  border-radius: 1rem;
+  padding: 0.5rem 4rem;
+  border: none;
+  background-color: #E8E8E8;
+  text-align: center;
+  font-size: 1rem;
+  margin: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+.login-cont .login-box button {
+  background-image: linear-gradient(to right, #e16ba4, #fab34e);
+  color: white;
+  border-radius: 1rem;
+  padding: 0.5rem 4rem;
+  margin: 1rem;
+  font-family: "Poppins", sans-serif;
 }/*# sourceMappingURL=style.css.map */
