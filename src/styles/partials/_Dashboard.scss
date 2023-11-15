@@ -1,0 +1,93 @@
+@use './variables' as v;
+
+.dashboard-cont{
+    @include v.center;
+    // border: 1px solid red;
+    height: 100vh;
+    width:100vw;
+    display: flex;
+    align-items: flex-start;
+
+    nav{
+        @include v.shadow;
+        // border: 1px solid blue;
+        height: 100vh;
+        width: 25vw;
+        display:flex;
+        flex-direction: column;
+        
+        header{
+            @include v.gradient(right);
+            height: 10vh;
+            display: flex;
+            a{
+                @include v.center;
+                img{
+                    width:5rem;
+                    padding:1rem;
+                    padding-right:0.5rem;
+                }
+            } 
+        }
+
+        main{
+            width: 25vw;
+            height: 70vh;
+            ul{
+                padding:1rem;
+                li{
+                    padding:1rem;
+                    a{
+                        color:black;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: row;
+                    }
+                }
+                li:hover{
+                    a{
+                        color: v.$secondaryColor;
+                        .sidebar-icons{
+                            color: v.$primaryColor;
+                        } 
+                    }
+                }
+            }
+        }
+
+        footer{
+            height:20vh;
+            width: 25vw;
+            padding: 1rem;
+            .sidebar-profile{
+                display:flex;
+                align-items: flex-end;
+                max-width: fit-content;
+                img{
+                    width:3rem;
+                }
+            }
+            a{  
+                display: flex;
+                align-items: center;
+                padding: 1rem;
+                color: black;
+            }
+            a:hover{
+                color: v.$secondaryColor;
+                .sidebar-icons{
+                    color: v.$primaryColor;
+                } 
+            }
+        }
+    }
+
+    main{
+        height: 90vh;
+        width:100vh;
+    }
+}
+
+.sidebar-icons{
+    padding-right: 1rem;
+}

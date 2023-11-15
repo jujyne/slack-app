@@ -98,7 +98,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 .login-cont .login-box button {
-  background: linear-gradient(to right, #ef4a75, #FFCB37);
+  background: linear-gradient(to right, #e16ba4, #fab34e);
   color: white;
   border-radius: 1rem;
   padding: 0.5rem 4rem;
@@ -106,8 +106,11 @@ body {
   font-family: "Poppins", sans-serif;
   cursor: pointer;
 }
+.login-cont .login-box button a {
+  color: white;
+}
 .login-cont .login-box button:hover {
-  background: linear-gradient(to left, #ef4a75, #FFCB37);
+  background: linear-gradient(to left, #e16ba4, #fab34e);
 }
 .login-cont .login-box p {
   font-size: 0.8rem;
@@ -128,7 +131,7 @@ body {
   align-items: flex-start;
 }
 .sign-up-cont nav {
-  background: linear-gradient(to right, #ef4a75, #FFCB37);
+  background: linear-gradient(to right, #e16ba4, #fab34e);
   height: 10vh;
   width: 100vw;
   display: flex;
@@ -178,7 +181,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 .sign-up-cont main form button {
-  background: linear-gradient(to right, #ef4a75, #FFCB37);
+  background: linear-gradient(to right, #e16ba4, #fab34e);
   color: white;
   border-radius: 1rem;
   padding: 0.5rem 4rem;
@@ -187,5 +190,97 @@ body {
   cursor: pointer;
 }
 .sign-up-cont main form button:hover {
-  background: linear-gradient(to left, #ef4a75, #FFCB37);
+  background: linear-gradient(to left, #e16ba4, #fab34e);
+}
+
+.dashboard-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: flex-start;
+}
+.dashboard-cont nav {
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.69);
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.69);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.69);
+  height: 100vh;
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard-cont nav header {
+  background: linear-gradient(to right, #e16ba4, #fab34e);
+  height: 10vh;
+  display: flex;
+}
+.dashboard-cont nav header a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.dashboard-cont nav header a img {
+  width: 5rem;
+  padding: 1rem;
+  padding-right: 0.5rem;
+}
+.dashboard-cont nav main {
+  width: 25vw;
+  height: 70vh;
+}
+.dashboard-cont nav main ul {
+  padding: 1rem;
+}
+.dashboard-cont nav main ul li {
+  padding: 1rem;
+}
+.dashboard-cont nav main ul li a {
+  color: black;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.dashboard-cont nav main ul li:hover a {
+  color: #fab34e;
+}
+.dashboard-cont nav main ul li:hover a .sidebar-icons {
+  color: #e16ba4;
+}
+.dashboard-cont nav footer {
+  height: 20vh;
+  width: 25vw;
+  padding: 1rem;
+}
+.dashboard-cont nav footer .sidebar-profile {
+  display: flex;
+  align-items: flex-end;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+.dashboard-cont nav footer .sidebar-profile img {
+  width: 3rem;
+}
+.dashboard-cont nav footer a {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  color: black;
+}
+.dashboard-cont nav footer a:hover {
+  color: #fab34e;
+}
+.dashboard-cont nav footer a:hover .sidebar-icons {
+  color: #e16ba4;
+}
+.dashboard-cont main {
+  height: 90vh;
+  width: 100vh;
+}
+
+.sidebar-icons {
+  padding-right: 1rem;
 }/*# sourceMappingURL=style.css.map */
