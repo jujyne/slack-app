@@ -1,8 +1,18 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import { DoorOpen, Mail, Settings, Users2 } from "lucide-react";
 import logo from "../../assets/images/ChizMiz-nav.png";
 import pic from "../../assets/images/profile-pic.png";
 
+
 export function Dashboard() {
+  const navigate = useNavigate()
+
+  const handleLogout =()=>{
+    localStorage.removeItem("currentUser")
+    navigate('/')
+  }
   return (
     <div className="dashboard-cont">
       <nav className="sidebar">
@@ -35,7 +45,7 @@ export function Dashboard() {
             <img src={pic} alt="" />
             <span>Marites Chismosa</span>
           </a>
-          <a href="/">
+          <a onClick={handleLogout}>
             <DoorOpen className="sidebar-icons" /> Logout
           </a>
         </footer>
