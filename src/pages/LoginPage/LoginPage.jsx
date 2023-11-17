@@ -8,7 +8,7 @@ export function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("currentUser")) || false
+    JSON.parse(localStorage.getItem("currentUser")) || null
   );
   const navigate = useNavigate();
 
@@ -28,19 +28,37 @@ export function LoginPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
+          body: JSON.stringify({
           email: email,
           password: password,
         }),
       });
   
       if (response.ok) {
+        
+        const accessToken = response.headers.get("access-token");
+        const client = response.headers.get("client")
+        const expiry = response.headers.get("expiry")
+        const uid = response.headers.get("uid")
+
         let data = await response.json();
         data.isLoggedIn = true;
+        let headers ={};
+        
+        headers.accessToken = accessToken;
+        headers.client = client ;
+        headers.expiry = expiry;
+        headers.uid= uid;
+
+        data.headers = headers;
+
+       
+
         localStorage.setItem("currentUser", JSON.stringify(data));
-        setCurrentUser(data);
+        setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
         console.log(data);
         navigate("/home");
+        
       } else {
         // Handle non-successful response (e.g., display an error message)
         console.error("Login failed:", response.statusText);
