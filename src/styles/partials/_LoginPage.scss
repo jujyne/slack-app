@@ -41,11 +41,9 @@
             @include v.gradient(left);
         }
         p{
-            font-size: 0.8rem;
-            a{
-                color:v.$tertiaryColor;
-                font-weight: bold;
-            }
+            font-size: v.$normalFont;
+            padding: 0.5rem;
+            padding-bottom: 1rem;
         }
     }
 }

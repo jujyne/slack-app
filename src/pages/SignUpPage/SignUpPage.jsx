@@ -1,6 +1,6 @@
 import logo from "../../assets/images/ChizMiz-nav.png";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export function SignUpPage() {
   const [email, setEmail] = useState("");
@@ -60,14 +60,17 @@ export function SignUpPage() {
       </nav>
       <main>
         <form onSubmit={handleSignUp}>
+          <h1>Create an Account</h1>
           <input
             type="text"
+            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
           />
           <input
             type="text"
+            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
@@ -79,6 +82,9 @@ export function SignUpPage() {
             placeholder="Confirm password"
           />
           <button type="submit">Sign Up</button>
+          <p>
+          Already have an account? <Link to="/">Login</Link>
+        </p>
         </form>
       </main>
     </div>

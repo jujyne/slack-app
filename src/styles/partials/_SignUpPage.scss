@@ -37,9 +37,17 @@
             padding: 1rem;
             padding-top:1rem;
             height: fit-content;
+            h1{
+                color: v.$tertiaryColor;
+                font-size:v.$header;
+                font-weight: bold;
+                padding:1rem;
+                padding-bottom:2rem;
+            }
             input{
                 border-radius: 1rem;
                 padding: 0.5rem 4rem;
+                margin:0.5rem;
                 border:none;
                 background-color:v.$offWhite;
                 text-align: center;
@@ -57,6 +65,11 @@
             }
             button:hover {
                 @include v.gradient(left);
+            }
+            p{
+                font-size: v.$normalFont;
+                padding: 0.5rem;
+                padding-bottom: 1rem;
             }
         }
     
