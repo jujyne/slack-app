@@ -6,41 +6,50 @@ export function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] =useState(false);
-  const [loading, setLoading]= useState(false);
+  const [data, setData] = useState(null)
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(localStorage.getItem("currentUser")) || false
+  );
   const navigate = useNavigate();
 
-  async function handleSignUp(event) {
-    event.preventDefault()
-    setLoading(true)
-  try{let result = await fetch("http://206.189.91.54/api/v1/auth/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      email: email,
-      password: password,
-      password_confirmation: confirmPassword,
-    }),
-  });
-
-    result = await result.json();
-    localStorage.setItem("currentUser", JSON.stringify(result))
-    console.log(result);
-    console.log(result.status)
-    setLoading(false)
-    if(result.status ==='success'){
+  useEffect(()=>{
+    if(currentUser && currentUser.isLoggedIn){
       navigate("/home")
     }
-}catch(error){
-  setError(error)
-  console.log(result.status)
-}
+  }, [])
 
-}
+  async function handleSignUp(event) {
+    event.preventDefault();
+    setLoading(true);
+    try {
+      let data = await fetch("http://206.189.91.54/api/v1/auth/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          password_confirmation: confirmPassword,
+        }),
+      });
+
+      setData(data = await data.json())
+      console.log(data);
+      console.log(data.status);
+      setLoading(false);
       
+      if (data.status === "success") {
+        navigate("/");
+      }
+    } catch (error) {
+      setError(error);
+      console.log(data.status);
+    }
+  }
 
   return (
     <div className="sign-up-cont">
