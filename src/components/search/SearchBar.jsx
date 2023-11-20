@@ -1,7 +1,8 @@
 import { Search } from "lucide-react";
 import { useState, useRef } from "react";
+import { SearchResults } from "./SearchResults";
 
-export function SearchBar({ setResults }) {
+export function SearchBar() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -11,11 +12,11 @@ export function SearchBar({ setResults }) {
   const [userData, setUserData] = useState(
     JSON.parse(localStorage.getItem("userData")) || null
   );
+  const [results, setResults] = useState([]);
 
   // Use useRef to store the timeout ID
   const debounceTimeoutRef = useRef(null);
 
-  
   function handleChange(value) {
     setInput(value);
     // Clear previous timeout
@@ -26,7 +27,6 @@ export function SearchBar({ setResults }) {
     }, 500); // Adjust the delay as needed (e.g., 500 milliseconds)
   }
 
-  
   const fetchData = (value) => {
     console.log("searching");
     fetch("http://206.189.91.54/api/v1/users", {
@@ -42,13 +42,15 @@ export function SearchBar({ setResults }) {
       .then((response) => response.json())
       .then((json) => {
         if (json && Array.isArray(json.data)) {
-          const results = json.data.filter(
-            (user) =>
-              value &&
-              user &&
-              user.uid &&
-              user.uid.toLowerCase().includes(value)
-          );
+          const results = json.data
+            .filter(
+              (user) =>
+                value &&
+                user &&
+                user.uid &&
+                user.uid.toLowerCase().startsWith(value.toLowerCase())
+            )
+            .sort((a, b) => a.uid.localeCompare(b.uid)); // Sort alphabetically
           setResults(results);
         } else {
           console.error(
@@ -64,15 +66,25 @@ export function SearchBar({ setResults }) {
       .finally(() => setLoading(false));
   };
 
+  const setSearchValue = (selectedResult) => {
+    setInput(selectedResult); // Update input with the selected result UID
+    // Trigger fetchData to update the results based on the selected value
+    fetchData(selectedResult);
+  };
+
   return (
-    <div className="search-bar-cont">
-      <Search className="sidebar-icons" />
-      <input
-        type="text"
-        placeholder="Search"
-        id="search"
-        onChange={(e) => handleChange(e.target.value)}
-      />
-    </div>
-  );
-}
+    <>
+      <div className="search-bar-cont">
+        <Search className="sidebar-icons" />
+        <input
+          type="text"
+          placeholder="Search"
+          id="search"
+          value={input}
+          onChange={(e) => handleChange(e.target.value)}
+        />
+      </div>
+      {input !== results[0]?.uid && <SearchResults results={results} setSearchValue={setSearchValue} />}
+    </>
+  )
+};

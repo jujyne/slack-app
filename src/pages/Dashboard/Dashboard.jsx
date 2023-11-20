@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
-import { SearchBar, SearchResults } from "./components";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 import { DoorOpen, Mail, Settings, Users2 } from "lucide-react";
 import logo from "../../assets/images/ChizMiz-nav.png";
 import pic from "../../assets/images/profile-pic.png";
-
+import { SearchBar, SearchResults } from "../../components";
 
 export function Dashboard() {
   const [email, setEmail] = useState("");
-  const [results, setResults] = useState([])
+  
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("currentUser")) || null
@@ -31,10 +29,11 @@ export function Dashboard() {
           <img src={logo} alt="ChizMiz-logo" />
         </a>
       </header>
+      <main>
       <nav className="sidebar">
-        <main>
-          <SearchBar setResults={setResults} />
-          <SearchResults results={results}/>
+        <div className="option-cont">
+          <SearchBar />
+         
           <ul>
             <li>
               <a href="">
@@ -51,8 +50,11 @@ export function Dashboard() {
                 <Settings className="sidebar-icons" /> Settings
               </a>
             </li>
+            <li>
+              <Link to='/home/send-message'>Send Message</Link>
+            </li>
           </ul>
-        </main>
+        </div>
         <footer>
           <a href="" className="sidebar-profile">
             <img src={pic} alt="" />
@@ -63,8 +65,10 @@ export function Dashboard() {
           </a>
         </footer>
       </nav>
+        <div className="content-cont"><Outlet/></div>
+      </main>
 
-      <main className="display-window"></main>
+      
       <footer></footer>
     </div>
   );

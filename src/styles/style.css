@@ -220,6 +220,131 @@ a {
   align-items: flex-start;
   flex-direction: column;
 }
+.dashboard-cont main {
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+}
+.dashboard-cont main nav {
+  height: 90vh;
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard-cont main nav .option-cont {
+  width: 25vw;
+  height: 70vh;
+}
+.dashboard-cont main nav .option-cont .search-bar-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-direction: row;
+  padding: 0.5rem;
+  margin: 1rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: text;
+}
+.dashboard-cont main nav .option-cont .search-bar-cont input {
+  font-family: "Poppins", sans-serif;
+  padding: 0.2rem 0.5rem;
+  border: none;
+}
+.dashboard-cont main nav .option-cont .results-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.dashboard-cont main nav .option-cont ul {
+  padding: 1rem;
+}
+.dashboard-cont main nav .option-cont ul li a {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 1rem;
+  color: black;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-weight: normal;
+  transition: padding-right 0.3s;
+}
+.dashboard-cont main nav .option-cont ul li:hover a {
+  padding-right: 2rem;
+  background-color: #E8E8E8;
+}
+.dashboard-cont main nav .option-cont ul li:hover a .sidebar-icons {
+  color: #E02E54;
+}
+.dashboard-cont main nav footer {
+  height: 20vh;
+  width: 25vw;
+  padding: 1rem;
+}
+.dashboard-cont main nav footer .sidebar-profile {
+  display: flex;
+  align-items: center;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  padding: 0.5rem;
+  transition: padding-right 0.3s;
+  border-radius: 1rem;
+}
+.dashboard-cont main nav footer .sidebar-profile img {
+  width: 3rem;
+  padding-right: 0.5rem;
+}
+.dashboard-cont main nav footer .sidebar-profile:hover {
+  padding-right: 2rem;
+  background-color: #E8E8E8;
+}
+.dashboard-cont main nav footer a {
+  padding: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 1rem;
+  color: black;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  transition: padding-right 0.3s;
+  border-radius: 1rem;
+  font-weight: normal;
+}
+.dashboard-cont main nav footer a:hover {
+  padding-right: 2rem;
+  background-color: #E8E8E8;
+}
+.dashboard-cont main nav footer a:hover .sidebar-icons {
+  color: #E02E54;
+}
+.dashboard-cont main .content-cont {
+  height: 90vh;
+  width: 75vw;
+  border: 1px solid orange;
+}
+.dashboard-cont main .content-cont .send-message-cont {
+  height: 90vh;
+  width: 75vw;
+}
+.dashboard-cont main .content-cont .send-message-cont .send-message-box {
+  height: 30rem;
+  width: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-direction: column;
+}
 .dashboard-cont header {
   background: linear-gradient(to right, #E02E54, #FFCB37);
   height: 10vh;
@@ -236,115 +361,6 @@ a {
   width: 5rem;
   padding: 1rem;
   padding-right: 0.5rem;
-}
-.dashboard-cont nav {
-  height: 90vh;
-  width: 25vw;
-  display: flex;
-  flex-direction: column;
-}
-.dashboard-cont nav main {
-  width: 25vw;
-  height: 70vh;
-}
-.dashboard-cont nav main .search-bar-cont {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex-direction: row;
-  padding: 0.5rem;
-  margin: 1rem;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  cursor: text;
-}
-.dashboard-cont nav main .search-bar-cont input {
-  font-family: "Poppins", sans-serif;
-  padding: 0.2rem 0.5rem;
-  border: none;
-}
-.dashboard-cont nav main .results-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  max-height: 300px;
-  overflow-y: scroll;
-}
-.dashboard-cont nav main ul {
-  padding: 1rem;
-}
-.dashboard-cont nav main ul li a {
-  padding: 0.5rem;
-  margin: 0.5rem;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-radius: 1rem;
-  color: black;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  font-weight: normal;
-  transition: padding-right 0.3s;
-}
-.dashboard-cont nav main ul li:hover a {
-  padding-right: 2rem;
-  background-color: #E8E8E8;
-}
-.dashboard-cont nav main ul li:hover a .sidebar-icons {
-  color: #E02E54;
-}
-.dashboard-cont nav footer {
-  height: 20vh;
-  width: 25vw;
-  padding: 1rem;
-}
-.dashboard-cont nav footer .sidebar-profile {
-  display: flex;
-  align-items: center;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-  padding: 0.5rem;
-  transition: padding-right 0.3s;
-  border-radius: 1rem;
-}
-.dashboard-cont nav footer .sidebar-profile img {
-  width: 3rem;
-  padding-right: 0.5rem;
-}
-.dashboard-cont nav footer .sidebar-profile:hover {
-  padding-right: 2rem;
-  background-color: #E8E8E8;
-}
-.dashboard-cont nav footer a {
-  padding: 0.5rem;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-radius: 1rem;
-  color: black;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  transition: padding-right 0.3s;
-  border-radius: 1rem;
-  font-weight: normal;
-}
-.dashboard-cont nav footer a:hover {
-  padding-right: 2rem;
-  background-color: #E8E8E8;
-}
-.dashboard-cont nav footer a:hover .sidebar-icons {
-  color: #E02E54;
-}
-.dashboard-cont .display-window {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 90vh;
-  width: 75vw;
 }
 
 .sidebar-icons {
