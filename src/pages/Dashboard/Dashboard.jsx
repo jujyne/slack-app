@@ -4,18 +4,31 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { DoorOpen, Mail, Settings, Users2 } from "lucide-react";
 import logo from "../../assets/images/ChizMiz-nav.png";
 import pic from "../../assets/images/profile-pic.png";
-import { SearchBar, SearchResults } from "../../components";
+import { SearchBar } from "../../components";
 
 export function Dashboard() {
   const [email, setEmail] = useState("");
-  
   const navigate = useNavigate();
+
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("currentUser")) || null
   );
 
   useEffect(() => {
     setEmail(currentUser.data.email);
+    fetch("http://206.189.91.54/api/v1/users", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        client: currentUser.headers.client,
+        uid: currentUser.headers.uid,
+        expiry: currentUser.headers.expiry,
+        "access-token": currentUser.headers.accessToken,
+      },
+    })
+    .then((res)=>res.json())
+    .then((data)=> localStorage.setItem("userData", JSON.stringify(data))) 
+      
   }, []);
 
   const handleLogout = () => {
@@ -32,13 +45,13 @@ export function Dashboard() {
       <main>
       <nav className="sidebar">
         <div className="option-cont">
-          <SearchBar />
-         
+          
+
           <ul>
             <li>
-              <a href="">
+              <Link to="/home/inbox">
                 <Mail className="sidebar-icons" /> Inbox
-              </a>
+              </Link>
             </li>
             <li>
               <a href="">
