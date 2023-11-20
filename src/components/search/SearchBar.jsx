@@ -1,17 +1,11 @@
-import { Search } from "lucide-react";
 import { useState, useRef } from "react";
-import { SearchResults } from "./SearchResults";
+import { SearchResults } from "./component/SearchResults";
 
-export function SearchBar() {
+export function SearchBar({setReceiverId}) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("currentUser"))
-  );
-  const [userData, setUserData] = useState(
-    JSON.parse(localStorage.getItem("userData")) || null
-  );
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const [results, setResults] = useState([]);
 
   // Use useRef to store the timeout ID
@@ -67,15 +61,17 @@ export function SearchBar() {
   };
 
   const setSearchValue = (selectedResult) => {
-    setInput(selectedResult); // Update input with the selected result UID
+    setInput(selectedResult.uid); // Update input with the selected result UID
     // Trigger fetchData to update the results based on the selected value
-    fetchData(selectedResult);
+    fetchData(selectedResult.uid);
+    setReceiverId(selectedResult.id)
+    console.log(selectedResult.id)
+    
   };
 
   return (
     <>
       <div className="search-bar-cont">
-        <Search className="sidebar-icons" />
         <input
           type="text"
           placeholder="Search"
@@ -84,7 +80,9 @@ export function SearchBar() {
           onChange={(e) => handleChange(e.target.value)}
         />
       </div>
-      {input !== results[0]?.uid && <SearchResults results={results} setSearchValue={setSearchValue} />}
+      {input !== results[0]?.uid && (
+        <SearchResults results={results} setSearchValue={setSearchValue} />
+      )}
     </>
-  )
-};
+  );
+}

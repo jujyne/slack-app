@@ -2,11 +2,12 @@
 .send-message-cont{
     height: 90vh;
     width: 75vw;
-    .send-message-box{
-        height: 30rem;
-        width: 30rem;
-        // border: 1px solid red;
-        @include v.center;
-        flex-direction: column;
-    }
+}
+
+.send-message-box{
+    height: 30rem;
+    width: 30rem;
+    // border: 1px solid red;
+    @include v.center;
+    flex-direction: column;
 }

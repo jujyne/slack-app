@@ -4,11 +4,10 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { DoorOpen, Mail, Settings, Users2 } from "lucide-react";
 import logo from "../../assets/images/ChizMiz-nav.png";
 import pic from "../../assets/images/profile-pic.png";
-import { SearchBar, SearchResults } from "../../components";
+import { SearchBar } from "../../components";
 
 export function Dashboard() {
   const [email, setEmail] = useState("");
-  
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("currentUser")) || null
