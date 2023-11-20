@@ -5,20 +5,24 @@ export function SearchBar({setReceiverId}) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showResults, setShowResults] = useState(false);
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const [results, setResults] = useState([]);
+  
 
   // Use useRef to store the timeout ID
   const debounceTimeoutRef = useRef(null);
 
   function handleChange(value) {
     setInput(value);
+    
     // Clear previous timeout
     clearTimeout(debounceTimeoutRef.current);
     // Set a new timeout
     debounceTimeoutRef.current = setTimeout(() => {
       fetchData(value);
     }, 500); // Adjust the delay as needed (e.g., 500 milliseconds)
+    setShowResults(true)
   }
 
   const fetchData = (value) => {
@@ -66,6 +70,7 @@ export function SearchBar({setReceiverId}) {
     fetchData(selectedResult.uid);
     setReceiverId(selectedResult.id)
     console.log(selectedResult.id)
+    setShowResults(false);
     
   };
 
@@ -80,9 +85,9 @@ export function SearchBar({setReceiverId}) {
           onChange={(e) => handleChange(e.target.value)}
         />
       </div>
-      {input !== results[0]?.uid && (
-        <SearchResults results={results} setSearchValue={setSearchValue} />
-      )}
+      {showResults? 
+  <SearchResults results={results} setSearchValue={setSearchValue} />
+: null}
     </>
   );
 }
