@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-
 import { DoorOpen, Mail, Settings, Users2 } from "lucide-react";
 import logo from "../../assets/images/ChizMiz-nav.png";
 import pic from "../../assets/images/profile-pic.png";
-import { SearchBar } from "../../components";
 import { fetchUsers } from "../../utils";
 
 export function Dashboard() {
@@ -17,7 +15,7 @@ export function Dashboard() {
 
   useEffect(() => {
     setEmail(currentUser.data.email);
-    fetchUsers(currentUser)
+    fetchUsers(currentUser);
   }, [currentUser]);
 
   const handleLogout = () => {
@@ -37,14 +35,20 @@ export function Dashboard() {
           <div className="option-cont">
             <ul>
               <li>
-                <Link to="/home/inbox">
+                <Link to="direct-messages">Messages</Link>
+              </li>
+              <li>
+                <Link to="inbox">
                   <Mail className="sidebar-icons" /> Inbox
                 </Link>
               </li>
               <li>
-                <a href="">
-                  <Users2 className="sidebar-icons" /> Channel
-                </a>
+                <Link to="create-channel">
+                  <Users2 className="sidebar-icons" /> Create channel
+                </Link>
+              </li>
+              <li>
+                <Link to="channels">Channels</Link>
               </li>
               <li>
                 <a href="">
@@ -52,7 +56,7 @@ export function Dashboard() {
                 </a>
               </li>
               <li>
-                <Link to="/home/send-message">Send Message</Link>
+                <Link to="send-message">Send Message</Link>
               </li>
             </ul>
           </div>

@@ -1,0 +1,49 @@
+.direct-message-cont{
+    height: 100%;
+    width: 100%;
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+}
+
+.inbox{
+    height: 100%;
+    width: 30%;
+    // border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-content{
+    height: 100%;
+    width: 70%;
+    // border: 1px solid green;
+    
+    h1{
+        height: 10%;
+        width: 100%;
+        border: 1px solid blue;
+        @include v.center;
+    }
+    .message-body{
+        height:90%;
+        width: 100%;
+        border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        .sender-message{
+            height: 5%;
+            width: 100;
+            border: 1px solid red;
+            text-align:left;
+            padding-left: 5rem;
+        }
+        .receiver-message{
+            height: 5%;
+            width: 100%;
+            text-align: right;
+            border: 1px solid blue;
+        }
+    }
+
+}

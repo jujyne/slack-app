@@ -330,7 +330,6 @@ a {
 .dashboard-cont main .content-cont {
   height: 90vh;
   width: 75vw;
-  border: 1px solid orange;
 }
 .dashboard-cont main .content-cont .send-message-cont {
   height: 90vh;
@@ -365,4 +364,73 @@ a {
 
 .sidebar-icons {
   padding-right: 1rem;
+}
+
+.direct-message-cont {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.inbox {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-content {
+  height: 100%;
+  width: 70%;
+}
+.message-content h1 {
+  height: 10%;
+  width: 100%;
+  border: 1px solid blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.message-content .message-body {
+  height: 90%;
+  width: 100%;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+}
+.message-content .message-body .sender-message {
+  height: 5%;
+  width: 100;
+  border: 1px solid red;
+  text-align: left;
+  padding-left: 5rem;
+}
+.message-content .message-body .receiver-message {
+  height: 5%;
+  width: 100%;
+  text-align: right;
+  border: 1px solid blue;
+}
+
+.get-channel-details-cont {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.channel-name {
+  height: 100%;
+  width: 30%;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-message {
+  height: 100%;
+  width: 70%;
+  border: 1px solid green;
 }/*# sourceMappingURL=style.css.map */
