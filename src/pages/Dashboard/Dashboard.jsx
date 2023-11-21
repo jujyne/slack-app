@@ -5,6 +5,7 @@ import { DoorOpen, Mail, Settings, Users2 } from "lucide-react";
 import logo from "../../assets/images/ChizMiz-nav.png";
 import pic from "../../assets/images/profile-pic.png";
 import { SearchBar } from "../../components";
+import { fetchUsers } from "../../utils";
 
 export function Dashboard() {
   const [email, setEmail] = useState("");
@@ -16,23 +17,12 @@ export function Dashboard() {
 
   useEffect(() => {
     setEmail(currentUser.data.email);
-    fetch("http://206.189.91.54/api/v1/users", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        client: currentUser.headers.client,
-        uid: currentUser.headers.uid,
-        expiry: currentUser.headers.expiry,
-        "access-token": currentUser.headers.accessToken,
-      },
-    })
-    .then((res)=>res.json())
-    .then((data)=> localStorage.setItem("userData", JSON.stringify(data))) 
-      
-  }, []);
+    fetchUsers(currentUser)
+  }, [currentUser]);
 
   const handleLogout = () => {
     localStorage.removeItem("currentUser");
+    localStorage.removeItem("userData");
     navigate("/");
   };
   return (
@@ -43,45 +33,44 @@ export function Dashboard() {
         </a>
       </header>
       <main>
-      <nav className="sidebar">
-        <div className="option-cont">
-          
-
-          <ul>
-            <li>
-              <Link to="/home/inbox">
-                <Mail className="sidebar-icons" /> Inbox
-              </Link>
-            </li>
-            <li>
-              <a href="">
-                <Users2 className="sidebar-icons" /> Channel
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <Settings className="sidebar-icons" /> Settings
-              </a>
-            </li>
-            <li>
-              <Link to='/home/send-message'>Send Message</Link>
-            </li>
-          </ul>
+        <nav className="sidebar">
+          <div className="option-cont">
+            <ul>
+              <li>
+                <Link to="/home/inbox">
+                  <Mail className="sidebar-icons" /> Inbox
+                </Link>
+              </li>
+              <li>
+                <a href="">
+                  <Users2 className="sidebar-icons" /> Channel
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <Settings className="sidebar-icons" /> Settings
+                </a>
+              </li>
+              <li>
+                <Link to="/home/send-message">Send Message</Link>
+              </li>
+            </ul>
+          </div>
+          <footer>
+            <a href="" className="sidebar-profile">
+              <img src={pic} alt="" />
+              <span>{email}</span>
+            </a>
+            <a onClick={handleLogout}>
+              <DoorOpen className="sidebar-icons" /> Logout
+            </a>
+          </footer>
+        </nav>
+        <div className="content-cont">
+          <Outlet />
         </div>
-        <footer>
-          <a href="" className="sidebar-profile">
-            <img src={pic} alt="" />
-            <span>{email}</span>
-          </a>
-          <a onClick={handleLogout}>
-            <DoorOpen className="sidebar-icons" /> Logout
-          </a>
-        </footer>
-      </nav>
-        <div className="content-cont"><Outlet/></div>
       </main>
 
-      
       <footer></footer>
     </div>
   );
