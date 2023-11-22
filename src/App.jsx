@@ -7,7 +7,7 @@ import {
   RetrieveMessage,
   SendMessage,
 } from "./components";
-import { DirectMessages } from "./pages/Dashboard";
+import { DirectMessages, NewMessage } from "./pages/Dashboard";
 
 export function App() {
   return (
@@ -18,7 +18,7 @@ export function App() {
         <Route path="/home" element={<Dashboard />}>
           <Route path="direct-messages" element={<DirectMessages />} />
           <Route path="inbox" element={<RetrieveMessage />} />
-          <Route path="send-message" element={<SendMessage />} />
+          <Route path="new-message" element={<NewMessage />} />
           <Route path="create-channel" element={<CreateChannel />} />
           <Route path="channels" element={<GetChannelDetails />}></Route>
         </Route>

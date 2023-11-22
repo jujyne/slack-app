@@ -56,7 +56,7 @@ export function Dashboard() {
                 </a>
               </li>
               <li>
-                <Link to="send-message">Send Message</Link>
+                <Link to="new-message">New message</Link>
               </li>
             </ul>
           </div>

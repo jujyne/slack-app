@@ -39,10 +39,71 @@ export function DirectMessages() {
     fetchData();
   }, []);
 
-  const fetchUserIds = useCallback(async (id) => {
-    try {
-      const response = await fetch(
-        `http://206.189.91.54/api/v1/messages?receiver_id=${id.id}&receiver_class=User`,
+  const fetchUserIds = useCallback(
+    async (id) => {
+      try {
+        const response = await fetch(
+          `http://206.189.91.54/api/v1/messages?receiver_id=${id.id}&receiver_class=User`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              client: currentUser.headers.client,
+              uid: currentUser.headers.uid,
+              expiry: currentUser.headers.expiry,
+              "access-token": currentUser.headers.accessToken,
+            },
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Fetched message data:", data);
+
+          const highestMessageId =
+            data.data.length > 0
+              ? data.data.reduce((maxId, currentMessage) => {
+                  const messageId = currentMessage.id;
+                  return messageId > maxId ? messageId : maxId;
+                }, data.data[0].id)
+              : null;
+
+          if (data.data.length > 0) {
+            const newEntry = {
+              message_id: highestMessageId,
+              id: id.id,
+              email: id.email,
+            };
+
+            setUserDisplay((prevUserDisplay) => [...prevUserDisplay, newEntry]);
+
+            setArrangedUserDisplay((prevArrangedUserDisplay) =>
+              [
+                ...getUniqueEntriesWithHighestMessageId([
+                  ...prevArrangedUserDisplay,
+                  newEntry,
+                ]),
+              ].sort((a, b) => b.message_id - a.message_id)
+            );
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching message data:", error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [currentUser.headers]
+  );
+
+  const fetchMessage = useCallback(
+    (receiverId) => {
+      console.log("Fetching messages:", receiverId);
+      if (messageData) {
+        setMessageData(null);
+      }
+      fetch(
+        `http://206.189.91.54/api/v1/messages?receiver_id=${receiverId}&receiver_class=User`,
         {
           method: "GET",
           headers: {
@@ -53,70 +114,20 @@ export function DirectMessages() {
             "access-token": currentUser.headers.accessToken,
           },
         }
-      );
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Fetched message data:", data);
-
-        const highestMessageId =
-          data.data.length > 0
-            ? data.data.reduce((maxId, currentMessage) => {
-                const messageId = currentMessage.id;
-                return messageId > maxId ? messageId : maxId;
-              }, data.data[0].id)
-            : null;
-
-        if (data.data.length > 0) {
-          const newEntry = {
-            message_id: highestMessageId,
-            id: id.id,
-            email: id.email,
-          };
-
-          setUserDisplay((prevUserDisplay) => [...prevUserDisplay, newEntry]);
-
-          setArrangedUserDisplay((prevArrangedUserDisplay) => [
-            ...getUniqueEntriesWithHighestMessageId([
-              ...prevArrangedUserDisplay,
-              newEntry,
-            ]),
-          ].sort((a, b) => b.message_id - a.message_id));
-        }
-      }
-    } catch (error) {
-      console.error("Error fetching message data:", error);
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  }, [currentUser.headers]);
-
-  const fetchMessage = useCallback((receiverId) => {
-    console.log("Fetching messages:", receiverId);
-    fetch(
-      `http://206.189.91.54/api/v1/messages?receiver_id=${receiverId}&receiver_class=User`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          client: currentUser.headers.client,
-          uid: currentUser.headers.uid,
-          expiry: currentUser.headers.expiry,
-          "access-token": currentUser.headers.accessToken,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Fetched message data:", data);
-        setMessageData(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching message data:", error);
-        setError(error);
-      });
-  }, [currentUser.headers]);
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Fetched message data:", data);
+          setMessageData(data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching message data:", error);
+          setError(error);
+        });
+    },
+    [currentUser.headers]
+  );
 
   const getUniqueEntriesWithHighestMessageId = useCallback((entries) => {
     return entries.reduce((acc, entry) => {
@@ -140,7 +151,14 @@ export function DirectMessages() {
         <>
           <div className="inbox">
             {arrangedUserDisplay.map((user) => (
-              <button key={user.id} onClick={() => fetchMessage(user.id)}>
+              <button
+                key={user.id}
+                onClick={() => {
+                  fetchMessage(user.id);
+                  setMessageName(user.email);
+                  setReceiverId(user.id);
+                }}
+              >
                 {user.email}
               </button>
             ))}
@@ -161,7 +179,9 @@ export function DirectMessages() {
                 </div>
               ))}
             </div>
-            {/* {messageName ? <SendMessage /> : null} */}
+            <div className="message-input-box">
+              <SendMessage receiverId={receiverId}/>
+            </div>
           </div>
         </>
       )}
