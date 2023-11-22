@@ -330,20 +330,14 @@ a {
 .dashboard-cont main .content-cont {
   height: 90vh;
   width: 75vw;
-  border: 1px solid orange;
 }
 .dashboard-cont main .content-cont .send-message-cont {
-  height: 90vh;
-  width: 75vw;
+  height: 100%;
+  width: 100%;
 }
 .dashboard-cont main .content-cont .send-message-box {
-  height: 30rem;
-  width: 30rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 .dashboard-cont header {
   background: linear-gradient(to right, #E02E54, #FFCB37);
@@ -365,4 +359,83 @@ a {
 
 .sidebar-icons {
   padding-right: 1rem;
+}
+
+.direct-message-cont {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.inbox {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-content {
+  height: 100%;
+  width: 70%;
+}
+.message-content h1 {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.message-content .message-body {
+  height: 65%;
+  width: 90%;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+}
+.message-content .message-body .sender-message {
+  height: 2rem;
+  width: 95%;
+  padding-left: 5%;
+  text-align: left;
+}
+.message-content .message-body .receiver-message {
+  height: 2rem;
+  width: 95%;
+  text-align: right;
+  padding-right: 5%;
+  border: 1px solid blue;
+}
+.message-content .message-input-box {
+  height: 15%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.message-content .message-input-box textarea {
+  height: 70%;
+  width: 90%;
+  font-family: inherit;
+}
+
+.get-channel-details-cont {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.channel-name {
+  height: 100%;
+  width: 30%;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-message {
+  height: 100%;
+  width: 70%;
+  border: 1px solid green;
 }/*# sourceMappingURL=style.css.map */

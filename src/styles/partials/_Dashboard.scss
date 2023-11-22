@@ -105,7 +105,7 @@
         .content-cont{
             height:90vh;
             width: 75vw;
-            border: 1px solid orange;
+            // border: 1px solid orange;
             @import './sendMessage';
         }
         
@@ -132,6 +132,8 @@
 .sidebar-icons{
     padding-right: 1rem;
 }
+@import './DirectMessages';
+@import './getChannelDetails';
 
 
 
