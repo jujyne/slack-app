@@ -35,7 +35,7 @@ export function Dashboard() {
           <div className="option-cont">
             <ul>
               <li>
-                <Link to="direct-messages">Messages</Link>
+                <Link to="/home/direct-messages">Messages</Link>
               </li>
               <li>
                 <Link to="inbox">
