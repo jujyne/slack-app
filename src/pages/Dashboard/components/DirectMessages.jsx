@@ -6,12 +6,9 @@ export function DirectMessages() {
   const [dataReady, setDataReady] = useState(false); // Introduce a state variable for data readiness
   const [error, setError] = useState(null);
   const [messageData, setMessageData] = useState(null);
-  const [activeName, setActiveName] = useState(null);
   const [messageName, setMessageName] = useState("");
-  const [rawMessage, setRawMessage] = useState(null);
-  const [senderMessage, setSenderMessage] = useState(null);
-  const [receiverMessage, setReceiverMessage] = useState(null);
   const [userDisplay, setUserDisplay] = useState([]);
+  const [receiverClass, setReceiverClass] = useState('')
   const [arrangedUserDisplay, setArrangedUserDisplay] = useState([]);
   const userData = JSON.parse(localStorage.getItem("userData"));
   const userIds = userData.map((user) => ({ id: user.id, email: user.email }));
@@ -157,6 +154,9 @@ export function DirectMessages() {
                   fetchMessage(user.id);
                   setMessageName(user.email);
                   setReceiverId(user.id);
+                  setReceiverClass('User')
+
+                  
                 }}
               >
                 {user.email}
@@ -180,7 +180,7 @@ export function DirectMessages() {
               ))}
             </div>
             <div className="message-input-box">
-              <SendMessage receiverId={receiverId}/>
+              {messageName?<SendMessage receiverClass={receiverClass} receiverId={receiverId}/>:null}
             </div>
           </div>
         </>

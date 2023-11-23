@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SearchBar } from "../search";
+import { SearchBar } from "../../../../../components";
 
 export function CreateChannel() {
   const [loading, setLoading] = useState(false);
@@ -44,9 +44,9 @@ export function CreateChannel() {
     }
   }
 
-  function handleAddUser(){
-    channelUsers.push[receiverId]
-    console.log(receiverId, " added")
+  function handleAddUser() {
+    channelUsers.push[receiverId];
+    console.log(receiverId, " added");
   }
 
   return (
@@ -59,7 +59,7 @@ export function CreateChannel() {
           value={channelName}
           onChange={(e) => setChannelName(e.target.value)}
         />
-        <SearchBar setReceiverId={setReceiverId}/>
+        <SearchBar setReceiverId={setReceiverId} />
         <button onClick={handleAddUser}>add user</button>
         <div>Channel Users</div>
         <div></div>

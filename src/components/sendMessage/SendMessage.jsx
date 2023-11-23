@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { SearchBar } from "../search";
-import { Send } from "lucide-react";
 
-export function SendMessage({receiverId}) {
+
+export function SendMessage({receiverId, receiverClass}) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
  
@@ -28,7 +27,7 @@ export function SendMessage({receiverId}) {
         },
         body: JSON.stringify({
           receiver_id: receiverId,
-          receiver_class: "User",
+          receiver_class: receiverClass,
           body: message,
         }),
       });
@@ -52,7 +51,6 @@ export function SendMessage({receiverId}) {
   return (
     <div className="send-message-cont">
       <form onSubmit={handleSendMessage} className="send-message-box">
-        
         <textarea
           value={message}
           onChange={(e) => {
