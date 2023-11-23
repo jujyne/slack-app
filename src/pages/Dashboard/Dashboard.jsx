@@ -50,6 +50,10 @@ export function Dashboard() {
               <li>
                 <Link to="channels">Channels</Link>
               </li>
+
+              <li>
+                <Link to="/home/add-channel-member">Add channel member</Link>
+              </li>
               <li>
                 <a href="">
                   <Settings className="sidebar-icons" /> Settings

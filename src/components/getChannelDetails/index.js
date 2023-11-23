@@ -1,2 +1,0 @@
-export {GetChannelDetails} from "./GetChannelDetails";
-
