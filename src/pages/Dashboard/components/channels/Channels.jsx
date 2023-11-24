@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { SendMessage } from "../../../../components";
+import { SearchBar, SendMessage } from "../../../../components";
 import { AddChannelMembers, CreateChannel } from "./components";
+import { Info, Phone, Video } from "lucide-react";
+
 
 export function Channels() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [channelData, setChannelData] = useState(null);
+  const [dataReady, setDataReady] = useState(false); //
+  const [channelData, setChannelData] = useState();
   const [channelName, setChannelName] = useState(null);
   const [messageData, setMessageData] = useState(null);
   const [receiverId, setReceiverId] = useState(null);
@@ -29,6 +32,7 @@ export function Channels() {
       .then((data) => {
         console.log("Fetched channel data:", data);
         setChannelData(data);
+        setDataReady(true);
         setLoading(false);
       })
       .catch((error) => {
@@ -75,53 +79,86 @@ export function Channels() {
 
   return (
     <div className="direct-message-cont">
-      {loading && <p>Loading...</p>}
-      {error && <p>Error fetching channel data: {error.message}</p>}
-      {channelData && channelData.data && channelData.data.length > 0 && (
-        <>
-        <CreateChannel/>
-          <div className="inbox">
-            {channelData.data.map((result) => (
-              <button
-                key={result.id}
-                onClick={() => {
-                  fetchMessage(result.id)
-                  setChannelName(result.name);
-                  setReceiverClass("Channel");
-                  setReceiverId(result.id);
-                }}
-              >
-                {result.name}
-              </button>
-            ))}
-          </div>
-          {renderChannelMessage && (
-            <div className="message-content">
-              <h1>{channelName}</h1>
-              <AddChannelMembers activeChannel={null} />
-              <div className="message-body">
-              {messageData?.data.map((result) => (
-                <div
-                  className={
-                    currentUser.data.email === result.sender.email
-                      ? "receiver-message"
-                      : "sender-message"
-                  }
+      <>
+        <div className="inbox">
+          <header>
+            <h1>CHANNELS</h1>
+          </header>
+          {!loading && dataReady && (
+            <div className="inbox-messages">
+              {channelData.data.map((result) => (
+                <button
+                  className="inbox-item"
                   key={result.id}
+                  onClick={() => {
+                    fetchMessage(result.id);
+                    setChannelName(result.name);
+                    setReceiverClass("Channel");
+                    setReceiverId(result.id);
+                  }}
                 >
-                  {result.sender.uid !== currentUser.headers.uid? result.sender.uid : null } {result.body}
-                </div>
+                  <div className="item-text">
+                    <h1>{result.name}</h1>
+                  </div>
+                </button>
               ))}
             </div>
-            <div className="message-input-box">
-            {channelName?<SendMessage receiverClass={receiverClass} receiverId={receiverId}/>:null}
-            </div>
-             
-            </div>
           )}
-        </>
-      )}
-      {!loading && !error && !channelData?.data?.length && <p>No channel data available.</p>}
+        </div>
+        <div className="message-content">
+          <header>
+            {channelName ? (
+              <>
+              <div className="header-left">
+                  <Info className="message-icons" />
+                </div>
+                <div className="header-name">
+                  <h1>{channelName}</h1>
+                </div>
+                <div className="header-right">
+                  <Phone className="message-icons" />
+                  <Video className="message-icons" />
+                </div>
+              </>
+            ) : null}
+          </header>
+
+          {/* <AddChannelMembers activeChannel={null} /> */}
+          <div className="message-body-cont">
+            <div className="message-body">
+              <div className="message-box">
+                {messageData?.data.map((result) => (
+                  <div
+                    className={
+                      currentUser.data.email === result.sender.email
+                        ? "receiver-message"
+                        : "sender-message"
+                    }
+                    key={result.id}
+                  >
+                    <p>
+                      {result.sender.uid !== currentUser.headers.uid
+                        ? result.sender.uid
+                        : null}{" "}
+                      {result.body}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="message-input-box">
+              {channelName ? (
+                <div className="send-inner-cont">
+                  <SendMessage
+                    receiverClass={receiverClass}
+                    receiverId={receiverId}
+                  />
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </>
     </div>
   );
 }

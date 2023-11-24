@@ -1,20 +1,18 @@
 import React, { useState } from "react";
+import { SendHorizontal, Image, Smile, Mic } from "lucide-react";
 
-
-export function SendMessage({receiverId, receiverClass}) {
+export function SendMessage({ receiverId, receiverClass }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
- 
+
   const [message, setMessage] = useState("");
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-  
 
   async function handleSendMessage(event) {
     event.preventDefault();
     setLoading(true);
     console.log("sending message");
-  
+
     try {
       let response = await fetch("http://206.189.91.54/api/v1/messages", {
         method: "POST",
@@ -31,10 +29,10 @@ export function SendMessage({receiverId, receiverClass}) {
           body: message,
         }),
       });
-  
+
       if (response.ok) {
         console.log("message sent");
-        
+
         setMessage("");
       } else {
         console.error("Failed to send message. Response:", response);
@@ -47,18 +45,30 @@ export function SendMessage({receiverId, receiverClass}) {
     }
   }
 
-
   return (
     <div className="send-message-cont">
       <form onSubmit={handleSendMessage} className="send-message-box">
-        <textarea
-          value={message}
-          onChange={(e) => {
-            setMessage(e.target.value);
-            console.log(message);
-          }}
-        ></textarea>
-        <button type="submit">send</button>
+        <div className="send-message-icons-cont">
+          <Image className="message-icons"/>
+          <Mic className="message-icons"/>
+          <Smile className="message-icons"/>
+        </div>
+        
+        <div className="textarea-cont">
+          <textarea
+            placeholder="Type your message here..."
+            value={message}
+            onChange={(e) => {
+              setMessage(e.target.value);
+              console.log(message);
+            }}
+          ></textarea>
+        </div>
+        <div className="send-button-cont">
+          <button type="submit">
+           <SendHorizontal className="message-icons"/>
+          </button>
+        </div>
       </form>
     </div>
   );

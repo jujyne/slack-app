@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { SearchResults } from "./component/SearchResults";
+import { Search } from "lucide-react";
 
 export function SearchBar({ setReceiverId }) {
   const [input, setInput] = useState("");
@@ -53,10 +54,12 @@ export function SearchBar({ setReceiverId }) {
   return (
     <>
       <div className="search-bar-cont">
+        <Search className="search-icon"/>
         <input
           type="text"
           placeholder="Search"
           id="search"
+          className="search-input"
           value={input}
           onChange={(e) => handleChange(e.target.value)}
         />
@@ -64,6 +67,7 @@ export function SearchBar({ setReceiverId }) {
       {showResults ? (
         <SearchResults results={results} setSearchValue={setSearchValue} />
       ) : null}
-    </>
+      
+      </>
   );
 }
