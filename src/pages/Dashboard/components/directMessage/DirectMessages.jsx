@@ -1,19 +1,22 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
-import { SearchBar, SendMessage } from "../../../components";
-import pic from "../../../assets/images/profile-pic.png";
-import { Info, Phone, Video } from "lucide-react";
+import { SearchBar, SendMessage } from "../../../../components";
+import { NewMessage } from "./component";
+import pic from "../../../../assets/images/profile-pic.png";
+import { Info, Phone, Plus, Video } from "lucide-react";
+
 
 export function DirectMessages() {
   const messageBoxRef = useRef();
   const [loading, setLoading] = useState(true); // Set initial loading state to true
   const [dataReady, setDataReady] = useState(false); // Introduce a state variable for data readiness
-
   const [error, setError] = useState(null);
   const [messageData, setMessageData] = useState(null);
   const [messageName, setMessageName] = useState("");
   const [userDisplay, setUserDisplay] = useState([]);
   const [receiverClass, setReceiverClass] = useState("");
   const [arrangedUserDisplay, setArrangedUserDisplay] = useState([]);
+  const [newMessageModal, setNewMessageModal] = useState(false)
+  
   const userData = JSON.parse(localStorage.getItem("userData")) || null;
   const userIds = userData.map((user) => ({ id: user.id, email: user.email }));
 
@@ -157,10 +160,10 @@ export function DirectMessages() {
 
   return (
     <div className="direct-message-cont">
-      <>
+        {newMessageModal? (<div className="new-message-modal"><NewMessage setNewMessageModal={setNewMessageModal}/></div>):null}
         <div className="inbox">
           <header>
-            <h1>INBOX</h1>
+            <h1>INBOX</h1> <Plus onClick={()=>setNewMessageModal(true)}/>
           </header>
           {!loading && dataReady && (
             <div className="inbox-messages">
@@ -177,7 +180,7 @@ export function DirectMessages() {
                 >
                   <img src={pic} alt="" />
                   <div className="item-text">
-                    <h1>{user.email}</h1>
+                    <h1>{user.email.split("@")[0]}</h1>
                     <span>{user.body}</span>
                   </div>
                 </button>
@@ -194,7 +197,7 @@ export function DirectMessages() {
                 </div>
                 <div className="header-name">
                   <img src={pic} alt="" />
-                  <h1>{messageName}</h1>
+                  <h1>{messageName.split("@")[0]}</h1>
                 </div>
                 <div className="header-right">
                   <Phone className="message-icons" />
@@ -232,7 +235,6 @@ export function DirectMessages() {
             </div>
           </div>
         </div>
-      </>
     </div>
   );
 }

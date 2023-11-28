@@ -17,14 +17,27 @@
         height: 10vh;
         background-color: v.$primaryColor;
         width: 20vw;
-        @include v.center;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        align-items: center;
+        .add-channel-icon{
+            color:v.$darkPink;
+            padding:0.25rem;
+            border-radius: 1rem;
+            background-color: white;
+            cursor: pointer;
+        }
+        .add-channel-icon:hover{
+            background-color: v.$faintSecondary;
+        }
         h1{
             font-size: v.$largeFont;
             padding: 0.8rem;
             background-color:WHITE;
             font-weight: 500;
             border-radius: 2rem;
-            color: v.$primaryColor;
+            color: v.$darkPink;
         }
     }
 }
@@ -42,11 +55,11 @@
     @include v.center;
     width: 20vw;
     cursor: pointer;
-    background-color: v.$faintPrimary;
+    background-color: white;
     display: flex;
     align-items: center;
     flex-direction: row;
-    margin-top: 0.5rem;
+    
     margin-bottom: 0.5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -65,7 +78,7 @@
             font-family: v.$fontStyle;
             font-size: v.$normalFont;
             font-weight: 450;
-            color:v.$primaryColor;
+            color:v.$darkPink;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -84,7 +97,9 @@
    
 }
 .inbox-item:hover{
-    background-color: v.$faintSecondary;
+    background-color: v.$faintPrimary;
+    
+
 }
 
 .message-content{
@@ -101,6 +116,7 @@
         @include v.center;
         flex-direction: row;
         justify-content: space-between;
+      
         .header-name{
             width: 17rem;
             margin-left: 2rem;
@@ -182,8 +198,14 @@
                         margin: 1rem;
                         margin: 0.3rem;
                         border-radius: 2rem;
-                        background-color: v.$faintSecondary;
+                        background-color: white;
                         color: black;
+                        display: flex;
+                        flex-direction: column;
+                        span{
+                            padding-bottom: 0.5rem;
+                            color: v.$messageIcons;
+                        }
                     }
                 }
                 .receiver-message{
@@ -301,7 +323,6 @@
             }
             button:hover{
                 background-color: v.$faintSecondary;
-               
                 .message-icons{
                     height: 1.5rem;
                     width: 1.5rem;
@@ -315,6 +336,7 @@
     }
     
 }
+
 
 
 

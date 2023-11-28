@@ -5,26 +5,36 @@
   flex-direction: row;
   position: relative;
   cursor: text;
-
+  .search-icon{
+    width: 8%;
+    padding-right:2%;
+  }
   input {
     font-family: v.$fontStyle;
     padding: 0.2rem 0.5rem;
+    width: 90%;
     border: none;
     border-radius: 1rem;
     background-color: v.$faintPrimary;
   }
-
+  
+}
+.results-cont{
   .results-list {
     width: 100%;
     display: flex;
     flex-direction: column;
-    max-height: 300px;
+    max-height: 5rem;
     overflow-y: scroll;
-    position: absolute;
-    top: 100%; /* Position the results just below the input */
-    left: 0;
     z-index: 100;
     background-color: white;
-    margin: 0;
+    
+    .result-item{
+      cursor:pointer;
+      padding: 0.2rem;
+    }
+    .result-item:hover{
+      background-color: v.$offWhite;
+    }
   }
 }

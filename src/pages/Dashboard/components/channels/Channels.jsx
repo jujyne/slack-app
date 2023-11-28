@@ -1,18 +1,20 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { SearchBar, SendMessage } from "../../../../components";
 import { AddChannelMembers, CreateChannel } from "./components";
-import { Info, Phone, Video } from "lucide-react";
-
+import { Info, Phone, Plus, Video } from "lucide-react";
+import { UserPlus } from "lucide-react";
 
 export function Channels() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [modal, setModal] = useState(false);
   const [dataReady, setDataReady] = useState(false); //
   const [channelData, setChannelData] = useState();
   const [channelName, setChannelName] = useState(null);
   const [messageData, setMessageData] = useState(null);
   const [receiverId, setReceiverId] = useState(null);
   const [receiverClass, setReceiverClass] = useState("");
+  const [createChannelModal, setCreateChannelModal] = useState(false);
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -79,10 +81,26 @@ export function Channels() {
 
   return (
     <div className="direct-message-cont">
+      {modal ? (
+        <div className="add-member-modal">
+          <AddChannelMembers setModal={setModal} />
+        </div>
+      ) : null}
+      {createChannelModal ? (
+        <div className="add-channel-modal">
+          <CreateChannel setCreateChannelModal={setCreateChannelModal} />
+        </div>
+      ) : null}
       <>
         <div className="inbox">
           <header>
-            <h1>CHANNELS</h1>
+            <h1>CHANNELS</h1>{" "}
+            <div className="create-channel">
+              <Plus
+                onClick={() => setCreateChannelModal(true)}
+                className="add-channel-icon"
+              />
+            </div>
           </header>
           {!loading && dataReady && (
             <div className="inbox-messages">
@@ -109,21 +127,22 @@ export function Channels() {
           <header>
             {channelName ? (
               <>
-              <div className="header-left">
+                <div className="header-left">
                   <Info className="message-icons" />
                 </div>
                 <div className="header-name">
                   <h1>{channelName}</h1>
                 </div>
                 <div className="header-right">
-                  <Phone className="message-icons" />
-                  <Video className="message-icons" />
+                  <UserPlus
+                    className="message-icons"
+                    onClick={() => setModal(true)}
+                  />
                 </div>
               </>
             ) : null}
           </header>
 
-          {/* <AddChannelMembers activeChannel={null} /> */}
           <div className="message-body-cont">
             <div className="message-body">
               <div className="message-box">
@@ -137,9 +156,11 @@ export function Channels() {
                     key={result.id}
                   >
                     <p>
-                      {result.sender.uid !== currentUser.headers.uid
-                        ? result.sender.uid
-                        : null}{" "}
+                      <span>
+                        {result.sender.uid !== currentUser.headers.uid
+                          ? result.sender.uid.split('@')[0]
+                          : null}{" "}
+                      </span>
                       {result.body}
                     </p>
                   </div>

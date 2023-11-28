@@ -16,7 +16,7 @@ export function Dashboard() {
   useEffect(() => {
     setEmail(currentUser.data.email);
     fetchUsers(currentUser);
-    navigate("/home/direct-messages")
+    navigate("/home")
   }, [currentUser]);
 
   const handleLogout = () => {

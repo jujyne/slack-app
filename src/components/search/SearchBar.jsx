@@ -65,9 +65,7 @@ export function SearchBar({ setReceiverId }) {
         />
       </div>
       {showResults ? (
-        <SearchResults results={results} setSearchValue={setSearchValue} />
-      ) : null}
-      
+        <div className="results-cont"> <SearchResults results={results} setSearchValue={setSearchValue} /> </div>) : null}
       </>
   );
 }

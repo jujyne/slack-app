@@ -1,11 +1,12 @@
 import React,{ useState }  from "react";
 import { SearchBar } from "../../../../../components";
 
-export function AddChannelMembers({activeChannel}) {
+export function AddChannelMembers({activeChannel, setModal}) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const [receiverId, setReceiverId] = useState();
+  
 
 async function handleAddUser(event) {
     event.preventDefault();
@@ -45,6 +46,7 @@ async function handleAddUser(event) {
       <form onSubmit={handleAddUser}>
       <SearchBar setReceiverId={setReceiverId}/>
       <button type="submit">Add member</button>
+      <button onClick={()=>setModal(false)}>Close</button>
       </form>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SearchBar } from "../../../../../components";
 
-export function CreateChannel() {
+export function CreateChannel({ setCreateChannelModal }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [channelName, setChannelName] = useState("");
@@ -32,6 +32,7 @@ export function CreateChannel() {
       if (response.ok) {
         console.log("Channel created successfully");
         setChannelName("");
+        setCreateChannelModal(false)
       } else {
         console.error("Failed to create channel. Response:", response);
         // put an error message to the user here
@@ -44,26 +45,22 @@ export function CreateChannel() {
     }
   }
 
-  function handleAddUser() {
-    channelUsers.push[receiverId];
-    console.log(receiverId, " added");
-  }
+
 
   return (
     <div className="create-channel-cont">
       <form onSubmit={handleCreateChannel}>
-        <span>Create Channel</span>
+        <span>CREATE CHANNEL</span>
         <input
           type="text"
           placeholder="Channel name"
           value={channelName}
           onChange={(e) => setChannelName(e.target.value)}
         />
-        <SearchBar setReceiverId={setReceiverId} />
-        <button onClick={handleAddUser}>add user</button>
-        <div>Channel Users</div>
-        <div></div>
-        <button type="submit">Create Channel</button>
+        <div>
+          <button type="submit">Create Channel</button>
+          <button onClick={() => setCreateChannelModal(false)}>Close</button>
+        </div>
       </form>
     </div>
   );
