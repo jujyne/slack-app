@@ -5,7 +5,7 @@ export function SearchResults({ results, setSearchValue }) {
     return (
       <div className="results-list">
         {results.map((result, id) => (
-          <div key={id} onClick={() => setSearchValue(result)}>
+          <div className="result-item" key={id} onClick={() => setSearchValue(result)}>
             {result.uid}
           </div>
         ))}

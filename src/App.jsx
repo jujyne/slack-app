@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import {Dashboard, DirectMessages, Channels, LoginPage, NewMessage, SignUpPage } from "./pages";
+import { Dashboard, DirectMessages, Channels, LoginPage, NewMessage, SignUpPage } from "./pages";
 
 
 export function App() {

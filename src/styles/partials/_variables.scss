@@ -1,20 +1,26 @@
-@import url('https://fonts.cdnfonts.com/css/poppins');
-
+@import url('https://fonts.cdnfonts.com/css/roboto');
 
 //colors
-$primaryColor:#E02E54;
-$secondaryColor:  #FFCB37;
+$primaryColor:#ff69b4a2;
+$darkPink:#ff69b4;
+$faintPrimary:#fff5fa;
+$secondaryColor:  #ffdb58;
+$faintSecondary:#fff3c7;
 $tertiaryColor: #FF5864;
-$offWhite: #E8E8E8;
-
+$offWhite: #e0e0e083;
+$iconColor: $primaryColor;
+$messageIcons:#ff69b4;
 
 
 //font style
-$fontStyle: 'Poppins', sans-serif;
+$fontStyle: 'Roboto', sans-serif;
 
 //font size 
 $header: 2rem;
-$normalFont:0.8rem;
+$largeFont:1.2rem;
+$normalFont:1rem;
+$smallFont:0.8rem;
+
 
 
 //mixins
@@ -30,7 +36,21 @@ $normalFont:0.8rem;
   }
 
 @mixin shadow{
-  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
--webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 6px 0px $secondaryColor;
+-webkit-box-shadow: 0px 0px 6px 0px $secondaryColor;
+-moz-box-shadow: 0px 0px 6px 0px $secondaryColor;
+}
+
+@mixin scrollbar($className) {
+  #{$className}::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+  }
+  
+  #{$className}::-webkit-scrollbar-thumb {
+    background-color: #ff69b4a2; /* Color of the scrollbar thumb */
+  }
+  
+  #{$className}::-webkit-scrollbar-track {
+    background-color: transparent; /* Color of the scrollbar track */
+  }
 }

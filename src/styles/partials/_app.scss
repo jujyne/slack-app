@@ -1,4 +1,5 @@
 @use './variables' as v;
+    
 
 body{
     font-family: v.$fontStyle;
@@ -11,3 +12,5 @@ a{
     color:v.$tertiaryColor;
     font-weight: bold;
 }
+
+
