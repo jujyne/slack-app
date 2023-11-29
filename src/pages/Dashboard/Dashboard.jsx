@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { DoorOpen, Mail, MailPlus, Settings, Users2 } from "lucide-react";
+import { DoorOpen, Mail,  Settings, Users2 } from "lucide-react";
 import logo from "../../assets/images/ChizMiz-nav.png";
 import pic from "../../assets/images/profile-pic.png";
 import { fetchUsers } from "../../utils";
@@ -49,11 +49,7 @@ export function Dashboard() {
                 <Settings className="sidebar-icons" />
               </a>
             </li>
-            <li>
-              <Link to="new-message">
-                <MailPlus className="sidebar-icons" />
-              </Link>
-            </li>
+           
           </ul>
         </div>
         <footer>

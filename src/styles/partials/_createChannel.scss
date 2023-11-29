@@ -11,26 +11,35 @@
 }
 
 .create-channel-cont{
-    background-color:white;
-    height: fit-content;
-    height: 10rem;
+    min-height: 10rem;
     width:20rem;
-    @include v.center;
+    display: flex;
+    justify-content: space-around;
     flex-direction: column;
-    border-radius: 10vmin;
+    align-items: center;
+    border-radius: 1rem;
     color:black;
     flex-direction: column;
     padding: 1rem;
+    background-color: v.$primaryColor;
+    span{
+        font-size: v.$largeFont;
+        font-weight: bold;
+        color:white;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: v.$header;
+    }
     form{
         display: flex;
         flex-direction: column;
-        span{
-            font-size: v.$largeFont;
-            font-weight: bold;
-            color:v.$darkPink;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+        width: 80%;
+        // border: 1px solid red;
+        background-color: white;
+        border-radius:  1rem;
+        height: 9rem;
+        align-items: center;
+        justify-content: space-around;
         button{
             width: fit-content;
             padding:0.5rem;
@@ -50,8 +59,12 @@
             padding: 0.5rem;
             background-color: v.$offWhite;
             border: none;
-            margin-bottom: 1rem;
+            margin-top: 1rem
         };
+        input:focus{
+            outline: 2px solid v.$darkPink;
+
+        }
     }
     
 }

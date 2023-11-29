@@ -49,8 +49,9 @@ export function CreateChannel({ setCreateChannelModal }) {
 
   return (
     <div className="create-channel-cont">
+      <span>CREATE CHANNEL</span>
       <form onSubmit={handleCreateChannel}>
-        <span>CREATE CHANNEL</span>
+        
         <input
           type="text"
           placeholder="Channel name"

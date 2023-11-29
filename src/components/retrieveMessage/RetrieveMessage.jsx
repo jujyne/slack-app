@@ -6,12 +6,12 @@ export function RetrieveMessage() {
   const [error, setError] = useState(null);
   const [messages, setMessages] = useState([]);
   const [uniqueEmails, setUniqueEmails] = useState([]);
-  const [organizedMessages, setOrganizedMessages] = useState({}); // Declare organizedMessages state
-
+  const [organizedMessages, setOrganizedMessages] = useState({}); 
   const userData = JSON.parse(localStorage.getItem("userData"));
   const currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
   const [receiverId, setReceiverId] = useState(currentUser?.data?.id);
 
+  
   useEffect(() => {
     fetchData();
   }, [receiverId]);
@@ -60,19 +60,17 @@ export function RetrieveMessage() {
   }
 
   function organizeMessages(data) {
-    // Combine sent and received messages into one array
     const allMessages = data.flatMap((message) => {
       const senderEmail = message.sender?.email;
       const receiverEmail = message.receiver?.email;
   
-      // Check if both sender and receiver are defined and have email property
       if (senderEmail && receiverEmail) {
         return [
           {
             senderEmail,
             receiverEmail,
             message,
-            message_id: message.id, // Use message_id instead of created_at for sorting
+            message_id: message.id,
           },
         ];
       }

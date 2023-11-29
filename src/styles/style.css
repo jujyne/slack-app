@@ -1,4 +1,5 @@
 @import url("https://fonts.cdnfonts.com/css/roboto");
+@import url("https://fonts.cdnfonts.com/css/roboto");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -73,15 +74,16 @@ a {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  background: linear-gradient(to top right, #ff69b4, #ffdb58);
 }
 .login-cont .login-box {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0px 0px 6px 0px #ffdb58;
-  -webkit-box-shadow: 0px 0px 6px 0px #ffdb58;
-  -moz-box-shadow: 0px 0px 6px 0px #ffdb58;
+  box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
   background-color: white;
   border-radius: 1rem;
   padding: 1rem;
@@ -102,8 +104,12 @@ a {
   margin: 1rem;
   font-family: "Roboto", sans-serif;
 }
+.login-cont .login-box input:focus {
+  outline: none;
+  border: 2px solid rgba(255, 105, 180, 0.6352941176);
+}
 .login-cont .login-box button {
-  background: linear-gradient(to right, rgba(255, 105, 180, 0.6352941176), #ffdb58);
+  background-color: #ff69b4;
   color: white;
   border-radius: 1rem;
   padding: 0.5rem 4rem;
@@ -115,7 +121,8 @@ a {
   color: white;
 }
 .login-cont .login-box button:hover {
-  background: linear-gradient(to left, rgba(255, 105, 180, 0.6352941176), #ffdb58);
+  background-color: #fff3c7;
+  color: #ff69b4;
 }
 .login-cont .login-box p {
   font-size: 1rem;
@@ -132,9 +139,10 @@ a {
   width: 100vw;
   display: flex;
   align-items: flex-start;
+  background: linear-gradient(to top right, #ff69b4, #ffdb58);
 }
 .sign-up-cont nav {
-  background: linear-gradient(to right, rgba(255, 105, 180, 0.6352941176), #ffdb58);
+  background-color: transparent;
   height: 10vh;
   width: 100vw;
   display: flex;
@@ -164,9 +172,9 @@ a {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0px 0px 6px 0px #ffdb58;
-  -webkit-box-shadow: 0px 0px 6px 0px #ffdb58;
-  -moz-box-shadow: 0px 0px 6px 0px #ffdb58;
+  box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
   background-color: white;
   border-radius: 1rem;
   padding: 1rem;
@@ -175,8 +183,8 @@ a {
   height: fit-content;
 }
 .sign-up-cont main form h1 {
-  color: #FF5864;
-  font-size: 2rem;
+  color: #ff69b4;
+  font-size: 1.8rem;
   font-weight: bold;
   padding: 1rem;
   padding-bottom: 2rem;
@@ -191,8 +199,12 @@ a {
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
 }
+.sign-up-cont main form input:focus {
+  outline: none;
+  border: 2px solid rgba(255, 105, 180, 0.6352941176);
+}
 .sign-up-cont main form button {
-  background: linear-gradient(to right, rgba(255, 105, 180, 0.6352941176), #ffdb58);
+  background-color: #ff69b4;
   color: white;
   border-radius: 1rem;
   padding: 0.5rem 4rem;
@@ -201,7 +213,8 @@ a {
   cursor: pointer;
 }
 .sign-up-cont main form button:hover {
-  background: linear-gradient(to left, rgba(255, 105, 180, 0.6352941176), #ffdb58);
+  background-color: #fff3c7;
+  color: #ff69b4;
 }
 .sign-up-cont main form p {
   font-size: 1rem;
@@ -338,6 +351,7 @@ a {
   width: 20vw;
   display: flex;
   flex-direction: column;
+  background-color: #fff5fa;
 }
 .inbox header {
   height: 10vh;
@@ -382,7 +396,7 @@ a {
   flex-direction: column;
   width: 20vw;
   cursor: pointer;
-  background-color: white;
+  background-color: #fff5fa;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -410,6 +424,7 @@ a {
   text-align: left;
 }
 .inbox-item .item-text span {
+  max-width: 10rem;
   font-size: 0.8rem;
   text-align: left;
   font-family: "Roboto", sans-serif;
@@ -419,7 +434,7 @@ a {
 }
 
 .inbox-item:hover {
-  background-color: #fff5fa;
+  background-color: white;
 }
 
 .message-content {
@@ -522,7 +537,6 @@ a {
 .message-content .message-body-cont .message-body .message-box .sender-message p {
   max-width: 50rem;
   padding: 1rem;
-  margin: 1rem;
   margin: 0.3rem;
   border-radius: 2rem;
   background-color: white;
@@ -541,8 +555,8 @@ a {
 }
 .message-content .message-body-cont .message-body .message-box .receiver-message p {
   max-width: 50rem;
-  margin: 0.3rem;
   padding: 1rem;
+  margin: 0.3rem;
   border-radius: 2rem;
   background-color: rgba(255, 105, 180, 0.6352941176);
   color: white;
@@ -661,25 +675,28 @@ a {
   cursor: pointer;
 }
 
-.get-channel-details-cont {
-  height: 100%;
-  width: 100%;
+.get-channel-details-modal {
+  z-index: 2;
+  position: absolute;
   display: flex;
-  flex-direction: row;
-}
-
-.channel-name {
-  height: 100%;
-  width: 30%;
-  border: 1px solid red;
-  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
 }
-
-.channel-message {
-  height: 100%;
-  width: 70%;
-  border: 1px solid green;
+.get-channel-details-modal .channel-owner {
+  margin-bottom: 1rem;
+}
+.get-channel-details-modal .channel-owner span {
+  color: black;
+}
+.get-channel-details-modal .channel-members-list {
+  color: black;
 }
 
 .search-bar-cont {
@@ -703,15 +720,18 @@ a {
   border-radius: 1rem;
   background-color: #fff5fa;
 }
+.search-bar-cont input:focus {
+  outline: 2px solid rgba(255, 105, 180, 0.6352941176);
+}
 
 .results-cont .results-list {
   width: 100%;
   display: flex;
   flex-direction: column;
-  max-height: 5rem;
+  max-height: 7rem;
   overflow-y: scroll;
   z-index: 100;
-  background-color: white;
+  background-color: #fff5fa;
 }
 .results-cont .results-list .result-item {
   cursor: pointer;
@@ -719,6 +739,15 @@ a {
 }
 .results-cont .results-list .result-item:hover {
   background-color: rgba(224, 224, 224, 0.5137254902);
+}
+.results-cont .results-list::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+.results-cont .results-list::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 105, 180, 0.6352941176); /* Color of the scrollbar thumb */
+}
+.results-cont .results-list::-webkit-scrollbar-track {
+  background-color: transparent; /* Color of the scrollbar track */
 }
 
 .add-member-modal {
@@ -730,31 +759,62 @@ a {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  background-color: rgba(0, 0, 0, 0.26);
+  flex-direction: column;
 }
 
 .add-channel-members-cont {
-  background-color: #fff5fa;
-  height: -moz-fit-content;
-  height: fit-content;
-  padding: 5rem 2rem;
-  width: 55vmin;
+  min-height: 10rem;
+  width: 20rem;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  color: black;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: rgba(255, 105, 180, 0.6352941176);
+}
+.add-channel-members-cont h1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+.add-channel-members-cont form {
+  background-color: white;
+  width: 80%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.add-channel-members-cont div {
+  padding-top: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  flex-direction: column;
-  border-radius: 10vmin;
-  color: black;
-  box-shadow: 0px 0px 6px 0px #ffdb58;
-  -webkit-box-shadow: 0px 0px 6px 0px #ffdb58;
-  -moz-box-shadow: 0px 0px 6px 0px #ffdb58;
+  flex-direction: row;
 }
-.add-channel-members-cont button {
-  padding: 0.5rem 1rem;
+.add-channel-members-cont div button {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.5rem;
   border-radius: 1rem;
   font-family: "Roboto", sans-serif;
   background-color: #ff69b4;
   color: white;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+.add-channel-members-cont div button:hover {
+  background-color: #fff3c7;
+  color: #ff69b4;
 }
 
 .add-channel-modal {
@@ -771,31 +831,35 @@ a {
 }
 
 .create-channel-cont {
-  background-color: white;
-  height: -moz-fit-content;
-  height: fit-content;
-  height: 10rem;
+  min-height: 10rem;
   width: 20rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  flex-direction: column;
-  flex-direction: column;
-  border-radius: 10vmin;
+  border-radius: 1rem;
   color: black;
   flex-direction: column;
   padding: 1rem;
+  background-color: rgba(255, 105, 180, 0.6352941176);
+}
+.create-channel-cont span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
 }
 .create-channel-cont form {
   display: flex;
   flex-direction: column;
-}
-.create-channel-cont form span {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #ff69b4;
-  text-align: center;
-  margin-bottom: 2rem;
+  width: 80%;
+  background-color: white;
+  border-radius: 1rem;
+  height: 9rem;
+  align-items: center;
+  justify-content: space-around;
 }
 .create-channel-cont form button {
   width: -moz-fit-content;
@@ -817,7 +881,10 @@ a {
   padding: 0.5rem;
   background-color: rgba(224, 224, 224, 0.5137254902);
   border: none;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.create-channel-cont form input:focus {
+  outline: 2px solid #ff69b4;
 }
 
 .new-message-modal {
@@ -844,15 +911,15 @@ a {
   flex-direction: column;
   border-radius: 1rem;
   color: black;
-  flex-direction: column;
   padding: 1rem;
   flex-direction: column;
 }
 .new-message-cont h1 {
   height: 20%;
   color: white;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
+  padding-bottom: 1rem;
 }
 .new-message-cont .new-message-form {
   height: 80%;
@@ -863,6 +930,18 @@ a {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  justify-content: flex-end;
+}
+.new-message-cont .new-message-form textarea {
+  resize: none;
+  outline: none;
+  border: none;
+  background-color: #fff5fa;
+  border-radius: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  height: 5rem;
+  width: 15rem;
+  margin-bottom: 1rem;
 }
 
 .nm-send-button-cont button {
@@ -871,4 +950,46 @@ a {
   border-radius: 1rem;
   padding: 0.5rem;
   margin: 0.5rem;
+  cursor: pointer;
+}
+.nm-send-button-cont button:hover {
+  background-color: #fff3c7;
+  color: #ff69b4;
+}
+
+.get-channel-details-modal {
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+}
+.get-channel-details-modal .channel-owner {
+  margin-bottom: 1rem;
+}
+.get-channel-details-modal .channel-owner span {
+  color: black;
+}
+.get-channel-details-modal .channel-members-list {
+  color: black;
+}
+
+.page-not-found-cont {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.page-not-found-cont img {
+  width: 75vw;
 }/*# sourceMappingURL=style.css.map */
