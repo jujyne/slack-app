@@ -4,6 +4,7 @@
     @include v.center;
     height: 100vh;
     width: 100vw;
+    @include v.gradient( top right);
     .login-box{
         @include v.center;
         @include v.shadow;
@@ -25,8 +26,12 @@
             margin:1rem;
             font-family: v.$fontStyle;
         }
+        input:focus{
+            outline: none;
+            border: 2px solid v.$primaryColor;
+        }
         button{
-            @include v.gradient(right);
+            background-color: v.$darkPink;
             color: white;
             border-radius: 1rem;
             padding: 0.5rem 4rem;
@@ -38,7 +43,8 @@
             }
         }
         button:hover {
-            @include v.gradient(left);
+            background-color: v.$faintSecondary;
+            color: v.$darkPink;
         }
         p{
             font-size: v.$normalFont;

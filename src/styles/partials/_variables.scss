@@ -16,7 +16,7 @@ $messageIcons:#ff69b4;
 $fontStyle: 'Roboto', sans-serif;
 
 //font size 
-$header: 2rem;
+$header: 1.8rem;
 $largeFont:1.2rem;
 $normalFont:1rem;
 $smallFont:0.8rem;
@@ -25,7 +25,7 @@ $smallFont:0.8rem;
 
 //mixins
 @mixin gradient($direction) {
-  background: linear-gradient(to $direction, $primaryColor, $secondaryColor);
+  background: linear-gradient(to $direction, $darkPink, $secondaryColor);
 }
 
 @mixin center {
@@ -36,9 +36,9 @@ $smallFont:0.8rem;
   }
 
 @mixin shadow{
-  box-shadow: 0px 0px 6px 0px $secondaryColor;
--webkit-box-shadow: 0px 0px 6px 0px $secondaryColor;
--moz-box-shadow: 0px 0px 6px 0px $secondaryColor;
+  box-shadow: 0px 0px 6px 0px $primaryColor;
+-webkit-box-shadow: 0px 0px 6px 0px $primaryColor;
+-moz-box-shadow: 0px 0px 6px 0px $primaryColor;
 }
 
 @mixin scrollbar($className) {

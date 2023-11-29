@@ -2,13 +2,13 @@ import React, { useEffect, useState, useCallback, useRef } from "react";
 import { SearchBar, SendMessage } from "../../../../components";
 import { NewMessage } from "./component";
 import pic from "../../../../assets/images/profile-pic.png";
-import { Info, Phone, Plus, Video } from "lucide-react";
+import { Info, Phone, Plus, Video,MailPlus } from "lucide-react";
 
 
 export function DirectMessages() {
   const messageBoxRef = useRef();
-  const [loading, setLoading] = useState(true); // Set initial loading state to true
-  const [dataReady, setDataReady] = useState(false); // Introduce a state variable for data readiness
+  const [loading, setLoading] = useState(true); 
+  const [dataReady, setDataReady] = useState(false); 
   const [error, setError] = useState(null);
   const [messageData, setMessageData] = useState(null);
   const [messageName, setMessageName] = useState("");
@@ -40,7 +40,7 @@ export function DirectMessages() {
         for (const userId of userIds) {
           await fetchUserIds(userId);
         }
-        setDataReady(true); // Set dataReady to true when all data is fetched
+        setDataReady(true); 
       } catch (error) {
         console.error("Error fetching message data:", error);
         setError(error);
@@ -85,9 +85,9 @@ export function DirectMessages() {
               message_id: highestMessageId,
               id: id.id,
               email: id.email,
-              body: data.data[0].body,
+              body: data.data[data.data.length-1].body,
             };
-            console.log(newEntry);
+            console.log("new entry",newEntry);
             setUserDisplay((prevUserDisplay) => [...prevUserDisplay, newEntry]);
 
             setArrangedUserDisplay((prevArrangedUserDisplay) =>
@@ -98,6 +98,7 @@ export function DirectMessages() {
                 ]),
               ].sort((a, b) => b.message_id - a.message_id)
             );
+            console.log('arranged inbox', arrangedUserDisplay)
           }
         }
       } catch (error) {
@@ -152,6 +153,7 @@ export function DirectMessages() {
           acc = acc.filter((e) => e.id !== entry.id);
         }
         acc.push(entry);
+        console.log('jyne', entry)
       }
 
       return acc;
@@ -163,7 +165,7 @@ export function DirectMessages() {
         {newMessageModal? (<div className="new-message-modal"><NewMessage setNewMessageModal={setNewMessageModal}/></div>):null}
         <div className="inbox">
           <header>
-            <h1>INBOX</h1> <Plus onClick={()=>setNewMessageModal(true)}/>
+            <h1>INBOX</h1> <Plus className="add-channel-icon" onClick={()=>setNewMessageModal(true)}/>
           </header>
           {!loading && dataReady && (
             <div className="inbox-messages">

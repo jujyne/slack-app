@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Dashboard, DirectMessages, Channels, LoginPage, NewMessage, SignUpPage } from "./pages";
+import { Dashboard, DirectMessages, Channels, LoginPage, SignUpPage, PageNotFound } from "./pages";
+
+
 
 
 export function App() {
@@ -11,9 +13,9 @@ export function App() {
         <Route path="/sign-up" element={<SignUpPage />}></Route>
         <Route path="/home" element={<Dashboard />}>
           <Route path="direct-messages" element={<DirectMessages />} />
-          <Route path="new-message" element={<NewMessage />} />
           <Route path="channels" element={<Channels/>}></Route>
         </Route>
+        <Route path='*' element={<PageNotFound/>}/>
       </Routes>
     </Router>
   );

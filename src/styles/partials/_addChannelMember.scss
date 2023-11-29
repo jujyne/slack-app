@@ -6,27 +6,60 @@
     @include v.center;
     height:100vh;
     width: 100vw;
-    
+    background-color: rgba(0, 0, 0, 0.26);
+    flex-direction: column;
 }
 
 .add-channel-members-cont{
-   
-    background-color: v.$faintPrimary;
-    height: fit-content;
-    padding: 5rem 2rem;
-    width:55vmin;
-    @include v.center;
+    min-height: 10rem;
+    width:20rem;
+    display: flex;
+    justify-content: space-around;
     flex-direction: column;
-    border-radius: 10vmin;
+    align-items: center;
+    border-radius: 1rem;
     color:black;
-    @include v.shadow;
-    button{
-        padding:0.5rem 1rem;
-        border-radius: 1rem;
-        font-family: v.$fontStyle;
-        background-color:v.$darkPink;
-        color: white;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: v.$primaryColor;
+    h1{
+        font-size: v.$largeFont;
+        font-weight: bold;
+        color:white;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: v.$header;
     }
+    form{
+        background-color: white;
+        width: 80%;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    div{
+        padding-top: 1rem;
+        @include v.center;
+        flex-direction: row;
+        button{
+            width: fit-content;
+            padding:0.5rem;
+            border-radius: 1rem;
+            font-family: v.$fontStyle;
+            background-color:v.$darkPink;
+            color: white;
+            cursor:pointer;
+            margin: 0 0.5rem;
+        }
+        button:hover{
+            background-color: v.$faintSecondary;
+            color: v.$darkPink;
+        }
+    }
+    
+
 }
 
 

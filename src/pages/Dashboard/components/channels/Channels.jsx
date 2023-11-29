@@ -1,10 +1,17 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { SearchBar, SendMessage } from "../../../../components";
-import { AddChannelMembers, CreateChannel } from "./components";
-import { Info, Phone, Plus, Video } from "lucide-react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { SendMessage } from "../../../../components";
+import { Info, Plus } from "lucide-react";
 import { UserPlus } from "lucide-react";
+import {
+  AddChannelMembers,
+  CreateChannel,
+  GetChannelDetails,
+} from "./components";
+
+
 
 export function Channels() {
+  const messageBoxRef = useRef();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [modal, setModal] = useState(false);
@@ -15,8 +22,10 @@ export function Channels() {
   const [receiverId, setReceiverId] = useState(null);
   const [receiverClass, setReceiverClass] = useState("");
   const [createChannelModal, setCreateChannelModal] = useState(false);
-
+  const [showChannelDetails, setShowChannelDetails] = useState(false);
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+
 
   useEffect(() => {
     setLoading(true);
@@ -43,6 +52,11 @@ export function Channels() {
         setLoading(false);
       });
   }, []);
+  
+  useEffect(() => {
+    scrollToBottom();
+  }, [messageData]);
+
 
   const fetchMessage = useCallback(
     (receiverId) => {
@@ -72,12 +86,26 @@ export function Channels() {
         .catch((error) => {
           console.error("Error fetching message data:", error);
           setError(error);
+
+          // Check if the error status code indicates no available channels
+          if (error.response && error.response.status === 404) {
+            setMessageData(data);
+          }
         });
     },
     [currentUser.headers]
   );
 
-  const renderChannelMessage = channelName && receiverId && receiverClass;
+  const toggleChannelDetails = () => {
+    setShowChannelDetails(!showChannelDetails);
+  };
+
+  const scrollToBottom = () => {
+    if (messageBoxRef.current) {
+      messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
+    }
+  };
+
 
   return (
     <div className="direct-message-cont">
@@ -94,7 +122,7 @@ export function Channels() {
       <>
         <div className="inbox">
           <header>
-            <h1>CHANNELS</h1>{" "}
+            <h1>CHANNELS</h1>
             <div className="create-channel">
               <Plus
                 onClick={() => setCreateChannelModal(true)}
@@ -102,7 +130,7 @@ export function Channels() {
               />
             </div>
           </header>
-          {!loading && dataReady && (
+          {!loading && dataReady && channelData && channelData.data && (
             <div className="inbox-messages">
               {channelData.data.map((result) => (
                 <button
@@ -128,7 +156,15 @@ export function Channels() {
             {channelName ? (
               <>
                 <div className="header-left">
-                  <Info className="message-icons" />
+                  <Info
+                    onClick={toggleChannelDetails}
+                    className="message-icons"
+                  />
+                  {showChannelDetails ? (
+                    <div className="get-channel-details-modal">
+                      <GetChannelDetails receiverId={receiverId} />
+                    </div>
+                  ) : null}
                 </div>
                 <div className="header-name">
                   <h1>{channelName}</h1>
@@ -145,7 +181,7 @@ export function Channels() {
 
           <div className="message-body-cont">
             <div className="message-body">
-              <div className="message-box">
+              <div className="message-box" ref={messageBoxRef}>
                 {messageData?.data.map((result) => (
                   <div
                     className={
@@ -158,7 +194,7 @@ export function Channels() {
                     <p>
                       <span>
                         {result.sender.uid !== currentUser.headers.uid
-                          ? result.sender.uid.split('@')[0]
+                          ? result.sender.uid.split("@")[0]
                           : null}{" "}
                       </span>
                       {result.body}
