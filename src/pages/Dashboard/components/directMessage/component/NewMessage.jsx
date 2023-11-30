@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { SearchBar, SendMessage } from "../../../../../components";
+import toast from "react-hot-toast";
+import { PulseLoader} from "react-spinners";
 
-export function NewMessage({ setNewMessageModal }) {
+
+export function NewMessage({ setNewMessageModal, fetchData}) {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [receiverId, setReceiverId] = useState();
+  const [receiverId, setReceiverId] = useState(null);
   const [message, setMessage] = useState("");
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -12,36 +14,50 @@ export function NewMessage({ setNewMessageModal }) {
     event.preventDefault();
     setLoading(true);
     console.log("sending message to", receiverId);
-
-    try {
-      let response = await fetch("http://206.189.91.54/api/v1/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          client: currentUser.headers.client,
-          uid: currentUser.headers.uid,
-          expiry: currentUser.headers.expiry,
-          "access-token": currentUser.headers.accessToken,
-        },
-        body: JSON.stringify({
-          receiver_id: receiverId,
-          receiver_class: "User",
-          body: message,
-        }),
-      });
-
-      if (response.ok) {
-        console.log("message sent");
-        setMessage("");
-        setNewMessageModal(false);
-      } else {
-        console.error("Failed to send message. Response:", response);
-      }
-    } catch (error) {
-      console.error("Error sending message", error);
-      setError(error);
-    } finally {
+    if(receiverId == currentUser.data.id){
+      toast.error("You can't send a message to yourself")
       setLoading(false);
+    }
+    if (receiverId && !(receiverId == currentUser.data.id)) {
+      try {
+        let response = await fetch("http://206.189.91.54/api/v1/messages", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            client: currentUser.headers.client,
+            uid: currentUser.headers.uid,
+            expiry: currentUser.headers.expiry,
+            "access-token": currentUser.headers.accessToken,
+          },
+          body: JSON.stringify({
+            receiver_id: receiverId,
+            receiver_class: "User",
+            body: message,
+          }),
+        });
+
+        if (response.ok) {
+          console.log("message sent");
+          toast.success(`Message Sent!`);
+          setMessage("");
+          setNewMessageModal(false);
+          setReceiverId(null);
+          console.log(response);
+          fetchData();
+        } else {
+          toast.error("Failed to send message. Response:", response);
+        }
+      } catch (error) {
+        toast.error("Error sending message", error);
+        setLoading(false);
+      } finally {
+        setLoading(false);
+      }
+    }else if (message == ''){
+      toast.error("Message cannot be Empty")
+    }
+    else{
+      toast.error("Invalid receiver!")
     }
   }
 
@@ -64,7 +80,7 @@ export function NewMessage({ setNewMessageModal }) {
             ></textarea>
           </div>
           <div className="nm-send-button-cont">
-            <button type="submit">Send</button>
+            <button type="submit">{  loading? <PulseLoader color={"white"}  size={"0.4rem"} />:"Send"}</button>
             <button onClick={() => setNewMessageModal(false)}>Cancel</button>
           </div>
         </form>

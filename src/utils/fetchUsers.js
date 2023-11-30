@@ -14,7 +14,7 @@ export function fetchUsers(currentUser) {
         if (data && Array.isArray(data.data)) {
           // Filter users with id greater than 4500
           const usersGreaterThan4500 = data.data.filter(
-            (user) => user.id > 4500
+            (user) => user.id > (data.data.length-10)
           );
   
           // Store the filtered user data in local storage

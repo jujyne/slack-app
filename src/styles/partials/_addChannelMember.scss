@@ -21,17 +21,17 @@
     color:black;
     flex-direction: column;
     padding: 1rem;
-    background-color: v.$primaryColor;
+    background-color: white;
     h1{
         font-size: v.$largeFont;
         font-weight: bold;
-        color:white;
+        color:v.$lightBlack;
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         font-size: v.$header;
     }
     form{
-        background-color: white;
+        background-color: v.$offWhite;
         width: 80%;
         padding: 1rem;
         border-radius: 0.5rem;
@@ -45,17 +45,16 @@
         flex-direction: row;
         button{
             width: fit-content;
-            padding:0.5rem;
+            padding:0.5rem 1rem;
             border-radius: 1rem;
             font-family: v.$fontStyle;
-            background-color:v.$darkPink;
+            @include v.gradient(right);
             color: white;
             cursor:pointer;
             margin: 0 0.5rem;
         }
         button:hover{
-            background-color: v.$faintSecondary;
-            color: v.$darkPink;
+           opacity:0.7;
         }
     }
     

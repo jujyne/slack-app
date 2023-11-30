@@ -17,7 +17,7 @@
         flex-direction: column;
         
         header{
-            background-color: v.$primaryColor;
+            background-color: white;
             height: 10vh;
             width: 5vw;
             display: flex;
@@ -54,9 +54,9 @@
                 }
                 li:hover{
                     a{  
-                        background-color: v.$faintSecondary;
+                        
                         .sidebar-icons{
-                            color: v.$darkPink;
+                            color: v.$secondaryColor;
                         } 
                     }
                 }
@@ -97,9 +97,9 @@
                 cursor: pointer;
             }
             a:hover{  
-                background-color: v.$faintSecondary;
+                
                 .sidebar-icons{
-                    color: v.$darkPink;
+                    color: v.$secondaryColor;
                 } 
                
             }
@@ -116,8 +116,22 @@
         .content-cont{
             height:100vh;
             width: 95vw;
-            // border: 1px solid orange;
-            background-color: white;
+            // border: 1px solid orange
+            .background{
+                height:100vh;
+                width: 95vw;
+                @include v.center;
+                justify-content: flex-end;
+                position: fixed;
+                padding-left: 8rem;
+                z-index: -1;
+                @include v.gradient(right);
+                img{
+                    width: 80vw;
+                    
+                    
+                }
+            }
 
         }
         

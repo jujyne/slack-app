@@ -63,7 +63,7 @@ body {
 }
 
 a {
-  color: #FF5864;
+  color: #f659a3;
   font-weight: bold;
 }
 
@@ -74,16 +74,16 @@ a {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(to top right, #ff69b4, #ffdb58);
+  background: linear-gradient(to top right, #f659a3, #Ffc07f);
 }
 .login-cont .login-box {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
-  -webkit-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
-  -moz-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+  box-shadow: 0px 0px 6px 0px #f659a3;
+  -webkit-box-shadow: 0px 0px 6px 0px #f659a3;
+  -moz-box-shadow: 0px 0px 6px 0px #f659a3;
   background-color: white;
   border-radius: 1rem;
   padding: 1rem;
@@ -106,10 +106,10 @@ a {
 }
 .login-cont .login-box input:focus {
   outline: none;
-  border: 2px solid rgba(255, 105, 180, 0.6352941176);
+  border: 2px solid #f659a3;
 }
 .login-cont .login-box button {
-  background-color: #ff69b4;
+  background: linear-gradient(to right, #f659a3, #Ffc07f);
   color: white;
   border-radius: 1rem;
   padding: 0.5rem 4rem;
@@ -121,8 +121,7 @@ a {
   color: white;
 }
 .login-cont .login-box button:hover {
-  background-color: #fff3c7;
-  color: #ff69b4;
+  opacity: 0.8;
 }
 .login-cont .login-box p {
   font-size: 1rem;
@@ -139,7 +138,9 @@ a {
   width: 100vw;
   display: flex;
   align-items: flex-start;
-  background: linear-gradient(to top right, #ff69b4, #ffdb58);
+  background: linear-gradient(to top right, #f659a3, #Ffc07f);
+  -webkit-backdrop-filter: blur();
+          backdrop-filter: blur();
 }
 .sign-up-cont nav {
   background-color: transparent;
@@ -172,9 +173,9 @@ a {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
-  -webkit-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
-  -moz-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+  box-shadow: 0px 0px 6px 0px #f659a3;
+  -webkit-box-shadow: 0px 0px 6px 0px #f659a3;
+  -moz-box-shadow: 0px 0px 6px 0px #f659a3;
   background-color: white;
   border-radius: 1rem;
   padding: 1rem;
@@ -183,7 +184,7 @@ a {
   height: fit-content;
 }
 .sign-up-cont main form h1 {
-  color: #ff69b4;
+  color: #f659a3;
   font-size: 1.8rem;
   font-weight: bold;
   padding: 1rem;
@@ -201,10 +202,10 @@ a {
 }
 .sign-up-cont main form input:focus {
   outline: none;
-  border: 2px solid rgba(255, 105, 180, 0.6352941176);
+  border: 2px solid #f659a3;
 }
 .sign-up-cont main form button {
-  background-color: #ff69b4;
+  background: linear-gradient(to right, #f659a3, #Ffc07f);
   color: white;
   border-radius: 1rem;
   padding: 0.5rem 4rem;
@@ -213,8 +214,7 @@ a {
   cursor: pointer;
 }
 .sign-up-cont main form button:hover {
-  background-color: #fff3c7;
-  color: #ff69b4;
+  opacity: 0.8;
 }
 .sign-up-cont main form p {
   font-size: 1rem;
@@ -240,7 +240,7 @@ a {
   flex-direction: column;
 }
 .dashboard-cont nav header {
-  background-color: rgba(255, 105, 180, 0.6352941176);
+  background-color: white;
   height: 10vh;
   width: 5vw;
   display: flex;
@@ -274,15 +274,12 @@ a {
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 1rem;
-  color: #ff69b4;
+  color: #f659a3;
   flex-direction: row;
   font-weight: normal;
 }
-.dashboard-cont nav .option-cont ul li:hover a {
-  background-color: #fff3c7;
-}
 .dashboard-cont nav .option-cont ul li:hover a .sidebar-icons {
-  color: #ff69b4;
+  color: #Ffc07f;
 }
 .dashboard-cont nav footer {
   height: 20vh;
@@ -316,16 +313,13 @@ a {
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 1rem;
-  color: #ff69b4;
+  color: #f659a3;
   flex-direction: row;
   font-weight: normal;
   cursor: pointer;
 }
-.dashboard-cont nav footer a:hover {
-  background-color: #fff3c7;
-}
 .dashboard-cont nav footer a:hover .sidebar-icons {
-  color: #ff69b4;
+  color: #Ffc07f;
 }
 .dashboard-cont main {
   height: 100vh;
@@ -336,7 +330,22 @@ a {
 .dashboard-cont main .content-cont {
   height: 100vh;
   width: 95vw;
-  background-color: white;
+}
+.dashboard-cont main .content-cont .background {
+  height: 100vh;
+  width: 95vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: fixed;
+  padding-left: 8rem;
+  z-index: -1;
+  background: linear-gradient(to right, #f659a3, #Ffc07f);
+}
+.dashboard-cont main .content-cont .background img {
+  width: 80vw;
 }
 
 .direct-message-cont {
@@ -351,34 +360,35 @@ a {
   width: 20vw;
   display: flex;
   flex-direction: column;
-  background-color: #fff5fa;
+  background-color: #f6f6f6;
 }
 .inbox header {
   height: 10vh;
-  background-color: rgba(255, 105, 180, 0.6352941176);
+  background-color: #f6f6f6;
   width: 20vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
 }
 .inbox header .add-channel-icon {
-  color: #ff69b4;
+  color: #f659a3;
   padding: 0.25rem;
+  padding-right: 2rem;
   border-radius: 1rem;
-  background-color: white;
   cursor: pointer;
 }
 .inbox header .add-channel-icon:hover {
-  background-color: #fff3c7;
+  color: #Ffc07f;
 }
 .inbox header h1 {
   font-size: 1.2rem;
   padding: 0.8rem;
-  background-color: WHITE;
+  padding-left: 2rem;
   font-weight: 500;
   border-radius: 2rem;
-  color: #ff69b4;
+  color: #1c1c1c;
+  font-weight: bold;
 }
 
 .inbox-messages {
@@ -396,12 +406,11 @@ a {
   flex-direction: column;
   width: 20vw;
   cursor: pointer;
-  background-color: #fff5fa;
+  background-color: #f6f6f6;
   display: flex;
   align-items: center;
   flex-direction: row;
   margin-bottom: 0.5rem;
-  padding-top: 1rem;
   padding-bottom: 1rem;
 }
 .inbox-item img {
@@ -416,8 +425,8 @@ a {
   width: 13rem;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
-  font-weight: 450;
-  color: #ff69b4;
+  font-weight: bold;
+  color: #1c1c1c;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -433,15 +442,18 @@ a {
   white-space: nowrap;
 }
 
-.inbox-item:hover {
-  background-color: white;
+.inbox-item:hover h1 {
+  background: linear-gradient(to right, #f659a3, #Ffc07f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .message-content {
   height: 100vh;
   width: 75vw;
-  color: #ff69b4;
   background-color: white;
+  color: #f659a3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -449,7 +461,6 @@ a {
 }
 .message-content header {
   height: 10vh;
-  background-color: white;
   width: 75vw;
   display: flex;
   justify-content: center;
@@ -475,23 +486,23 @@ a {
 .message-content header .header-name h1 {
   padding: 1rem;
   border-radius: 3rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   background-color: white;
+  color: #1c1c1c;
   font-weight: bold;
 }
 .message-content header .header-left {
   margin-left: 1rem;
 }
 .message-content header .header-left .message-icons {
-  color: #ff69b4;
+  color: #f659a3;
   width: 2rem;
   height: 1.5rem;
-  padding: 0.5rem;
   cursor: pointer;
   border-radius: 2rem;
 }
 .message-content header .header-left .message-icons:hover {
-  background-color: #fff3c7;
+  color: #Ffc07f;
 }
 .message-content header .header-right {
   height: -moz-fit-content;
@@ -503,30 +514,40 @@ a {
   margin-right: 1rem;
 }
 .message-content header .header-right .message-icons {
-  color: #ff69b4;
+  color: #f659a3;
   width: 2rem;
   height: 1.5rem;
-  padding: 0.5rem;
   cursor: pointer;
   border-radius: 2rem;
 }
 .message-content header .header-right .message-icons:hover {
-  background-color: #fff3c7;
+  color: #Ffc07f;
 }
 .message-content .message-body-cont {
   height: 90vh;
   width: 75vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .message-content .message-body-cont .message-body {
   height: 75vh;
-  width: 75vw;
+  width: 70vw;
   background-color: rgba(224, 224, 224, 0.5137254902);
+  border-radius: 1rem;
+  padding: 1rem;
 }
 .message-content .message-body-cont .message-body .message-box {
   display: flex;
   flex-direction: column;
   height: 75vh;
   overflow-y: auto;
+}
+.message-content .message-body-cont .message-body .message-box img {
+  padding: 2rem;
+  width: 30rem;
+  background-color: white;
 }
 .message-content .message-body-cont .message-body .message-box .sender-message {
   display: flex;
@@ -540,13 +561,13 @@ a {
   margin: 0.3rem;
   border-radius: 2rem;
   background-color: white;
-  color: black;
+  color: #1c1c1c;
   display: flex;
   flex-direction: column;
 }
 .message-content .message-body-cont .message-body .message-box .sender-message p span {
   padding-bottom: 0.5rem;
-  color: #ff69b4;
+  color: #f659a3;
 }
 .message-content .message-body-cont .message-body .message-box .receiver-message {
   display: flex;
@@ -558,14 +579,15 @@ a {
   padding: 1rem;
   margin: 0.3rem;
   border-radius: 2rem;
-  background-color: rgba(255, 105, 180, 0.6352941176);
+  background: linear-gradient(to right, #f659a3, #Ffc07f);
   color: white;
 }
 .message-content .message-body-cont .message-body .message-box::-webkit-scrollbar {
   width: 5px; /* Width of the scrollbar */
 }
 .message-content .message-body-cont .message-body .message-box::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 105, 180, 0.6352941176); /* Color of the scrollbar thumb */
+  background: linear-gradient(to bottom, #f659a3, #Ffc07f);
+  /* Color of the scrollbar thumb */
 }
 .message-content .message-body-cont .message-body .message-box::-webkit-scrollbar-track {
   background-color: transparent; /* Color of the scrollbar track */
@@ -609,17 +631,16 @@ a {
   width: 15%;
 }
 .send-message-cont .send-message-box .send-message-icons-cont .message-icons {
-  color: #ff69b4;
-  width: 2rem;
+  color: #f659a3;
+  width: 1.8rem;
   height: 2rem;
-  padding: 0.25rem;
   margin: 0.25rem;
   margin-left: 1rem;
   cursor: pointer;
   border-radius: 2rem;
 }
 .send-message-cont .send-message-box .send-message-icons-cont .message-icons:hover {
-  background-color: #fff3c7;
+  color: #Ffc07f;
 }
 .send-message-cont .send-message-box .textarea-cont {
   width: 75%;
@@ -652,7 +673,6 @@ a {
   width: 5%;
 }
 .send-message-cont .send-message-box .send-button-cont button {
-  padding: 0.5rem;
   border-radius: 3rem;
   background-color: transparent;
   display: flex;
@@ -663,16 +683,14 @@ a {
 .send-message-cont .send-message-box .send-button-cont button .message-icons {
   height: 1.5rem;
   width: 1.5rem;
-  color: #ff69b4;
+  color: #f659a3;
   cursor: pointer;
-}
-.send-message-cont .send-message-box .send-button-cont button:hover {
-  background-color: #fff3c7;
 }
 .send-message-cont .send-message-box .send-button-cont button:hover .message-icons {
   height: 1.5rem;
   width: 1.5rem;
   cursor: pointer;
+  color: #Ffc07f;
 }
 
 .get-channel-details-modal {
@@ -685,9 +703,7 @@ a {
   background-color: white;
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
-  -webkit-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
-  -moz-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+  border: 1px solid #f659a3;
 }
 .get-channel-details-modal .channel-owner {
   margin-bottom: 1rem;
@@ -718,10 +734,10 @@ a {
   width: 90%;
   border: none;
   border-radius: 1rem;
-  background-color: #fff5fa;
+  background-color: rgba(224, 224, 224, 0.5137254902);
 }
 .search-bar-cont input:focus {
-  outline: 2px solid rgba(255, 105, 180, 0.6352941176);
+  outline: 2px solid #f659a3;
 }
 
 .results-cont .results-list {
@@ -744,7 +760,8 @@ a {
   width: 5px; /* Width of the scrollbar */
 }
 .results-cont .results-list::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 105, 180, 0.6352941176); /* Color of the scrollbar thumb */
+  background: linear-gradient(to bottom, #f659a3, #Ffc07f);
+  /* Color of the scrollbar thumb */
 }
 .results-cont .results-list::-webkit-scrollbar-track {
   background-color: transparent; /* Color of the scrollbar track */
@@ -774,18 +791,18 @@ a {
   color: black;
   flex-direction: column;
   padding: 1rem;
-  background-color: rgba(255, 105, 180, 0.6352941176);
+  background-color: white;
 }
 .add-channel-members-cont h1 {
   font-size: 1.2rem;
   font-weight: bold;
-  color: white;
+  color: #1c1c1c;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-size: 1.8rem;
 }
 .add-channel-members-cont form {
-  background-color: white;
+  background-color: rgba(224, 224, 224, 0.5137254902);
   width: 80%;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -804,17 +821,16 @@ a {
 .add-channel-members-cont div button {
   width: -moz-fit-content;
   width: fit-content;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 1rem;
   font-family: "Roboto", sans-serif;
-  background-color: #ff69b4;
+  background: linear-gradient(to right, #f659a3, #Ffc07f);
   color: white;
   cursor: pointer;
   margin: 0 0.5rem;
 }
 .add-channel-members-cont div button:hover {
-  background-color: #fff3c7;
-  color: #ff69b4;
+  opacity: 0.7;
 }
 
 .add-channel-modal {
@@ -841,21 +857,21 @@ a {
   color: black;
   flex-direction: column;
   padding: 1rem;
-  background-color: rgba(255, 105, 180, 0.6352941176);
+  background-color: white;
 }
 .create-channel-cont span {
   font-size: 1.2rem;
   font-weight: bold;
-  color: white;
+  color: #1c1c1c;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-size: 1.8rem;
 }
 .create-channel-cont form {
   display: flex;
   flex-direction: column;
   width: 80%;
-  background-color: white;
+  background-color: rgba(224, 224, 224, 0.5137254902);
   border-radius: 1rem;
   height: 9rem;
   align-items: center;
@@ -867,24 +883,23 @@ a {
   padding: 0.5rem;
   border-radius: 1rem;
   font-family: "Roboto", sans-serif;
-  background-color: #ff69b4;
+  background: linear-gradient(to right, #f659a3, #Ffc07f);
   color: white;
   cursor: pointer;
   margin: 0 0.5rem;
 }
 .create-channel-cont form button:hover {
-  background-color: #fff3c7;
-  color: #ff69b4;
+  opacity: 0.7;
 }
 .create-channel-cont form input {
   border-radius: 1rem;
   padding: 0.5rem;
-  background-color: rgba(224, 224, 224, 0.5137254902);
+  background-color: white;
   border: none;
   margin-top: 1rem;
 }
 .create-channel-cont form input:focus {
-  outline: 2px solid #ff69b4;
+  outline: 2px solid #f659a3;
 }
 
 .new-message-modal {
@@ -901,7 +916,7 @@ a {
 }
 
 .new-message-cont {
-  background-color: rgba(255, 105, 180, 0.6352941176);
+  background: linear-gradient(to bottom right, #f659a3, #Ffc07f);
   min-height: 15rem;
   width: 20rem;
   display: flex;
@@ -936,25 +951,25 @@ a {
   resize: none;
   outline: none;
   border: none;
-  background-color: #fff5fa;
+  background-color: rgba(224, 224, 224, 0.5137254902);
   border-radius: 0.5rem;
   font-family: "Roboto", sans-serif;
   height: 5rem;
   width: 15rem;
   margin-bottom: 1rem;
+  padding: 0.5rem;
 }
 
 .nm-send-button-cont button {
-  background-color: #ff69b4;
+  background: linear-gradient(to right, #f659a3, #Ffc07f);
   color: white;
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   margin: 0.5rem;
   cursor: pointer;
 }
 .nm-send-button-cont button:hover {
-  background-color: #fff3c7;
-  color: #ff69b4;
+  opacity: 0.7;
 }
 
 .get-channel-details-modal {
@@ -967,9 +982,7 @@ a {
   background-color: white;
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
-  -webkit-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
-  -moz-box-shadow: 0px 0px 6px 0px rgba(255, 105, 180, 0.6352941176);
+  border: 1px solid #f659a3;
 }
 .get-channel-details-modal .channel-owner {
   margin-bottom: 1rem;

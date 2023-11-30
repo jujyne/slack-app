@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { SendHorizontal, Image, Smile, Mic } from "lucide-react";
+import { ClipLoader } from "react-spinners";
 
-export function SendMessage({ receiverId, receiverClass }) {
+export function SendMessage({ receiverId, receiverClass, fetchMessage, fetchData }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState("");
@@ -31,7 +32,8 @@ export function SendMessage({ receiverId, receiverClass }) {
 
       if (response.ok) {
         console.log("message sent");
-
+        fetchMessage(receiverId);
+        fetchData();
         setMessage("");
       } else {
         console.error("Failed to send message. Response:", response);
@@ -48,11 +50,11 @@ export function SendMessage({ receiverId, receiverClass }) {
     <div className="send-message-cont">
       <form onSubmit={handleSendMessage} className="send-message-box">
         <div className="send-message-icons-cont">
-          <Image className="message-icons"/>
-          <Mic className="message-icons"/>
-          <Smile className="message-icons"/>
+          <Image className="message-icons" />
+          <Mic className="message-icons" />
+          <Smile className="message-icons" />
         </div>
-        
+
         <div className="textarea-cont">
           <textarea
             placeholder="Type your message here..."
@@ -64,8 +66,12 @@ export function SendMessage({ receiverId, receiverClass }) {
           ></textarea>
         </div>
         <div className="send-button-cont">
-          <button type="submit">
-           <SendHorizontal className="message-icons"/>
+          <button type="submit" disabled={!message.trim()}>
+            {loading ? (
+              <ClipLoader color={"#Ffc07f"} speedMultiplier={0.8} size={"2rem"} />
+            ) : (
+              <SendHorizontal className="message-icons" />
+            )}
           </button>
         </div>
       </form>
