@@ -7,38 +7,42 @@
     
 }
 
+
+
 .inbox{
     height:100vh;
     width: 20vw;
     // border: 1px solid blue;
     display: flex;
     flex-direction: column;
-    background-color: v.$faintPrimary;
+    background-color: #f6f6f6;
     header{
         height: 10vh;
-        background-color: v.$primaryColor;
+        background-color: #f6f6f6;
         width: 20vw;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         flex-direction: row;
         align-items: center;
         .add-channel-icon{
             color:v.$darkPink;
             padding:0.25rem;
+            padding-right: 2rem;
             border-radius: 1rem;
-            background-color: white;
             cursor: pointer;
         }
         .add-channel-icon:hover{
-            background-color: v.$faintSecondary;
+            color: v.$secondaryColor;
         }
         h1{
             font-size: v.$largeFont;
             padding: 0.8rem;
-            background-color:WHITE;
+            padding-left: 2rem;
             font-weight: 500;
             border-radius: 2rem;
-            color: v.$darkPink;
+            color: v.$lightBlack;
+            font-weight: bold;
+            
         }
     }
 }
@@ -56,13 +60,12 @@
     @include v.center;
     width: 20vw;
     cursor: pointer;
-    background-color: v.$faintPrimary;
+    background-color: #f6f6f6;
     display: flex;
     align-items: center;
     flex-direction: row;
-    
     margin-bottom: 0.5rem;
-    padding-top: 1rem;
+    
     padding-bottom: 1rem;
     img{
         width:3rem;
@@ -78,12 +81,13 @@
             // border: 1px solid red ;
             font-family: v.$fontStyle;
             font-size: v.$normalFont;
-            font-weight: 450;
-            color:v.$darkPink;
+            font-weight: bold;
+            color:v.$lightBlack;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             text-align: left;
+            
         }
         span{
             // border: 1px solid red;
@@ -99,21 +103,21 @@
    
 }
 .inbox-item:hover{
-    background-color: white;
-    
-
+    h1{
+        @include v.textGradient;
+    }
 }
 
 .message-content{
     height: 100vh;
     width: 75vw;
     // border: 1px solid green;
-    color: v.$messageIcons;
     background-color: white;
+    color: v.$messageIcons;
     @include v.center;
+    
     header{
         height:10vh;
-        background-color: white;
         width: 75vw;
         @include v.center;
         flex-direction: row;
@@ -132,8 +136,9 @@
             h1{
                 padding: 1rem;
                 border-radius: 3rem;
-                font-size: v.$normalFont;
+                font-size: v.$largeFont;
                 background-color: white;
+                color: v.$lightBlack;
                 font-weight: bold;
             }
         }
@@ -143,12 +148,11 @@
                 color: v.$messageIcons;
                 width: 2rem;
                 height: 1.5rem;
-                padding: 0.5rem;
                 cursor: pointer;
                 border-radius: 2rem;
             }
             .message-icons:hover{
-                background-color: v.$faintSecondary;
+                color: v.$secondaryColor;
             }
         }
         .header-right{
@@ -161,33 +165,40 @@
                 color: v.$messageIcons;
                 width: 2rem;
                 height: 1.5rem;
-                padding: 0.5rem;
                 cursor: pointer;
                 border-radius: 2rem;
             }
             .message-icons:hover{
-                background-color: v.$faintSecondary;
+                color: v.$secondaryColor;
             }
            
         }
         
     }
 
+
   
    .message-body-cont{
         height: 90vh;
         width: 75vw;
         // border: 1px solid blue;
+        @include v.center;
         .message-body{
             height:75vh;
-            width: 75vw;
+            width: 70vw;
             background-color: v.$offWhite;
+            border-radius: 1rem;
+            padding: 1rem;
             .message-box {
                 display: flex;
                 flex-direction: column;
                 height: 75vh;
                 overflow-y: auto;
-                
+                img{
+                    padding:2rem;
+                    width: 30rem;
+                    background-color: white;
+                }
                 .sender-message{
                     display: flex;
                     align-items: center;
@@ -200,7 +211,7 @@
                         margin: 0.3rem;
                         border-radius: 2rem;
                         background-color: white;
-                        color: black;
+                        color: v.$lightBlack;
                         display: flex;
                         flex-direction: column;
                         span{
@@ -219,7 +230,7 @@
                         padding: 1rem;
                         margin: 0.3rem;
                         border-radius: 2rem;
-                        background-color: v.$primaryColor;
+                        @include v.gradient(right);
                         color: white;
                     }
                 }
@@ -246,6 +257,10 @@
    }
 }
 
+
+
+
+
 .send-message-cont{
     display: flex;
     align-items: center;
@@ -271,16 +286,15 @@
             
             .message-icons{
                 color: v.$messageIcons;
-                width: 2rem;
+                width: 1.8rem;
                 height: 2rem;
-                padding: 0.25rem;
                 margin:0.25rem;
                 margin-left:1rem;
                 cursor: pointer;
                 border-radius: 2rem;
             }
             .message-icons:hover{
-                background-color: v.$faintSecondary;
+                color: v.$secondaryColor;
             }
         }
         .textarea-cont{
@@ -309,7 +323,6 @@
             width: 5%;
             // border: 1px solid red;
             button{
-             padding: 0.5rem;
              border-radius: 3rem;  
              background-color: transparent;
              @include v.center;
@@ -322,12 +335,11 @@
              }  
             }
             button:hover{
-                background-color: v.$faintSecondary;
                 .message-icons{
                     height: 1.5rem;
                     width: 1.5rem;
                     cursor: pointer;
-                    
+                    color: v.$secondaryColor;
                  } 
             }
         }
@@ -336,6 +348,8 @@
     }
     
 }
+
+
 
 
 

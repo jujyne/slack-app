@@ -8,6 +8,7 @@
     display: flex;
     align-items: flex-start;
     @include v.gradient(top right);
+    backdrop-filter: blur();
     nav{
         background-color: transparent;
         height: 10vh;
@@ -59,7 +60,7 @@
                 border: 2px solid v.$primaryColor;
             }
             button{
-                background-color: v.$darkPink;
+                @include v.gradient(right);
                 color: white;
                 border-radius: 1rem;
                 padding: 0.5rem 4rem;
@@ -68,8 +69,8 @@
                 cursor:pointer;
             }
             button:hover {
-                background-color: v.$faintSecondary;
-                color: v.$darkPink;
+                opacity: 0.8;
+                
             }
             p{
                 font-size: v.$normalFont;

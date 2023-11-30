@@ -7,14 +7,18 @@ import {
   CreateChannel,
   GetChannelDetails,
 } from "./components";
-
-
+import { HashLoader, PulseLoader } from "react-spinners";
+import channelGif from "../../../../assets/images/channel-gif.gif";
+import waiting from "../../../../assets/images/waiting.gif";
+import teatime from "../../../../assets/images/tea-time.gif";
 
 export function Channels() {
   const messageBoxRef = useRef();
   const [loading, setLoading] = useState(false);
+  const [loadingChat, setLoadingChat] = useState(false);
   const [error, setError] = useState(null);
   const [modal, setModal] = useState(false);
+  const [activeChannel, setActiveChannel] =useState(null)
   const [dataReady, setDataReady] = useState(false); //
   const [channelData, setChannelData] = useState();
   const [channelName, setChannelName] = useState(null);
@@ -25,10 +29,16 @@ export function Channels() {
   const [showChannelDetails, setShowChannelDetails] = useState(false);
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-
-
   useEffect(() => {
     setLoading(true);
+    fetchChannels();
+  }, []);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messageData]);
+
+  function fetchChannels(){
     fetch("http://206.189.91.54/api/v1/channels", {
       method: "GET",
       headers: {
@@ -51,16 +61,12 @@ export function Channels() {
         setError(error);
         setLoading(false);
       });
-  }, []);
-  
-  useEffect(() => {
-    scrollToBottom();
-  }, [messageData]);
-
+  }
 
   const fetchMessage = useCallback(
     (receiverId) => {
       console.log("Fetching messages:", receiverId);
+      setLoadingChat(true);
       if (messageData) {
         setMessageData(null);
       }
@@ -81,7 +87,7 @@ export function Channels() {
         .then((data) => {
           console.log("Fetched message data:", data);
           setMessageData(data);
-          setLoading(false);
+          setLoadingChat(false);
         })
         .catch((error) => {
           console.error("Error fetching message data:", error);
@@ -106,17 +112,16 @@ export function Channels() {
     }
   };
 
-
   return (
     <div className="direct-message-cont">
       {modal ? (
         <div className="add-member-modal">
-          <AddChannelMembers setModal={setModal} />
+          <AddChannelMembers setModal={setModal} activeChannel={activeChannel}/>
         </div>
       ) : null}
       {createChannelModal ? (
         <div className="add-channel-modal">
-          <CreateChannel setCreateChannelModal={setCreateChannelModal} />
+          <CreateChannel fetchChannels={fetchChannels}setCreateChannelModal={setCreateChannelModal} />
         </div>
       ) : null}
       <>
@@ -130,17 +135,18 @@ export function Channels() {
               />
             </div>
           </header>
-          {!loading && dataReady && channelData && channelData.data && (
+          {!loading && dataReady && channelData && channelData.data ? (
             <div className="inbox-messages">
               {channelData.data.map((result) => (
                 <button
                   className="inbox-item"
                   key={result.id}
-                  onClick={() => {
-                    fetchMessage(result.id);
+                  onClick={async () => {
+                    await fetchMessage(result.id);
                     setChannelName(result.name);
                     setReceiverClass("Channel");
                     setReceiverId(result.id);
+                    setActiveChannel(result.id);
                   }}
                 >
                   <div className="item-text">
@@ -148,6 +154,28 @@ export function Channels() {
                   </div>
                 </button>
               ))}
+            </div>
+          ) : !loading && dataReady ? (
+            <div
+              className="inbox-messages"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-start",
+              }}
+            >
+              <p>No messages yet</p>
+            </div>
+          ) : (
+            <div
+              className="inbox-messages"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-start",
+              }}
+            >
+              <HashLoader color={"#Ffc07f"} speedMultiplier={0.8} />
             </div>
           )}
         </div>
@@ -181,34 +209,85 @@ export function Channels() {
 
           <div className="message-body-cont">
             <div className="message-body">
-              <div className="message-box" ref={messageBoxRef}>
-                {messageData?.data.map((result) => (
+              {!messageData && loadingChat ? (
+                <div
+                  className="message-box"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <img style={{
+                        background:
+                          "linear-gradient(to top right, #f659a3, #Ffc07f)",
+                      }} src={waiting} alt="" />
+                  <PulseLoader color={"#Ffc07f"} speedMultiplier={0.8} />
+                </div>
+              ) : messageData && !loadingChat ? (
+                messageData.data.length > 0 ? (
+                  <div className="message-box" ref={messageBoxRef}>
+                    {messageData.data.map((result) => (
+                      <div
+                        className={
+                          currentUser.data.email === result.sender.email
+                            ? "receiver-message"
+                            : "sender-message"
+                        }
+                        key={result.id}
+                      >
+                        <p>
+                          <span>
+                            {result.sender.uid !== currentUser.headers.uid
+                              ? result.sender.uid.split("@")[0]
+                              : null}{" "}
+                          </span>
+                          {result.body}
+                        </p>
+                      </div>
+                    ))}
+                  </div>) : (
                   <div
-                    className={
-                      currentUser.data.email === result.sender.email
-                        ? "receiver-message"
-                        : "sender-message"
-                    }
-                    key={result.id}
+                    className="message-box"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
                   >
-                    <p>
-                      <span>
-                        {result.sender.uid !== currentUser.headers.uid
-                          ? result.sender.uid.split("@")[0]
-                          : null}{" "}
-                      </span>
-                      {result.body}
-                    </p>
+                    <img
+                      style={{
+                        background:
+                          "linear-gradient(to top right, #f659a3, #Ffc07f)",
+                      }}
+                      src={channelGif}
+                      alt=""
+                    />
                   </div>
-                ))}
-              </div>
+                )
+              ) : (
+                <div
+                  className="message-box"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background:
+                      "linear-gradient(to top right, #f659a3, #Ffc07f)",
+                  }}
+                >
+                  <img src={teatime} alt="" />
+                </div>
+              )}
             </div>
             <div className="message-input-box">
               {channelName ? (
                 <div className="send-inner-cont">
                   <SendMessage
                     receiverClass={receiverClass}
-                    receiverId={receiverId}
+                    receiverId={receiverId} 
+                    fetchMessage={fetchMessage}
+                    
                   />
                 </div>
               ) : null}

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { DoorOpen, Mail,  Settings, Users2 } from "lucide-react";
+import { DoorOpen, Mail, Settings, Users2 } from "lucide-react";
 import logo from "../../assets/images/ChizMiz-nav.png";
 import pic from "../../assets/images/profile-pic.png";
 import { fetchUsers } from "../../utils";
+import bg from "../../assets/images/background.png";
 
 export function Dashboard() {
-  const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
   const [currentUser, setCurrentUser] = useState(
@@ -14,9 +14,8 @@ export function Dashboard() {
   );
 
   useEffect(() => {
-    setEmail(currentUser.data.email);
     fetchUsers(currentUser);
-    navigate("/home")
+    navigate("/home");
   }, [currentUser]);
 
   const handleLogout = () => {
@@ -49,7 +48,6 @@ export function Dashboard() {
                 <Settings className="sidebar-icons" />
               </a>
             </li>
-           
           </ul>
         </div>
         <footer>
@@ -64,6 +62,9 @@ export function Dashboard() {
       </nav>
       <main>
         <div className="content-cont">
+          <div className="background">
+            <img  src={bg} alt="" />
+          </div>
           <Outlet />
         </div>
       </main>

@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import logo from "../../assets/images/ChizMiz-logo.png";
+import logo from "../../assets/images/ChizMiz-logo.gif";
+import { SyncLoader } from "react-spinners";
+import toast, {Toaster} from "react-hot-toast";
+
 
 export function LoginPage() {
   const [email, setEmail] = useState("");
@@ -12,11 +15,11 @@ export function LoginPage() {
   );
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    if(currentUser && currentUser.isLoggedIn){
-      navigate("/home")
+  useEffect(() => {
+    if (currentUser && currentUser.isLoggedIn) {
+      navigate("/home");
     }
-  }, [])
+  }, []);
 
   async function handleLogin(event) {
     event.preventDefault();
@@ -28,48 +31,50 @@ export function LoginPage() {
         headers: {
           "Content-Type": "application/json",
         },
-          body: JSON.stringify({
-            email: email,
-            password: password,
-          }),
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
       });
   
-      if (response.ok) {
-        
-        const accessToken = response.headers.get("access-token");
-        const client = response.headers.get("client")
-        const expiry = response.headers.get("expiry")
-        const uid = response.headers.get("uid")
-
-        let data = await response.json();
-        data.isLoggedIn = true;
-        let headers ={};
-        
-        headers.accessToken = accessToken;
-        headers.client = client ;
-        headers.expiry = expiry;
-        headers.uid= uid;
-
-        data.headers = headers;
-
-       
-
-        localStorage.setItem("currentUser", JSON.stringify(data));
-        setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
-        console.log(data);
-        navigate("/home");
-        
-      } else {
-        // Handle non-successful response (e.g., display an error message)
-        console.error("Login failed:", response.statusText);
+      if (!response.ok) {
+        const data = await response.json();
+        console.log("error", data);
       }
-    } catch (error) {
-      setError(error);
-      console.error("Error during login:", error);
+  
+      const accessToken = response.headers.get("access-token");
+      const client = response.headers.get("client");
+      const expiry = response.headers.get("expiry");
+      const uid = response.headers.get("uid");
+  
+      let data = await response.json();
+      data.isLoggedIn = true;
+      let headers = {
+        accessToken,
+        client,
+        expiry,
+        uid,
+      };
+  
+      data.headers = headers;
+  
+      localStorage.setItem("currentUser", JSON.stringify(data));
+      setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
+      console.log(data);
+      navigate("/home");
+      toast.success("Login Successful")
+    } catch {
+      toast.error('Invalid login credentials. Please try again.',{
+        style: {
+          color: '#f659a3',
+        },
+       
+      })
     } finally {
       setLoading(false);
     }
   }
+    
 
   return (
     <div className="login-cont">
@@ -89,7 +94,13 @@ export function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit">
+          {loading ? (
+            <SyncLoader color={"white"} loading={loading} size={"0.5rem"} />
+          ) : (
+            "Login"
+          )}
+        </button>
         <p>
           Don't have an account yet? <Link to="/sign-up">Sign Up</Link>
         </p>
